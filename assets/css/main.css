@@ -1,12 +1,7 @@
+
 .content {
-  background-image: url("../images/homepageImage.jpg");
+  padding-top: 20%;
   text-align: center;
-  /* Full height */
-  height: 100%;
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .font {

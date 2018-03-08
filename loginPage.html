@@ -2,20 +2,42 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login Page</title>
+    <title>Brisbane Connected: login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
   </head>
 
   <body>
-    <h2>Login</h2>
+    <div id="header" class="font">
+      <ul>
+        <ul>
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#register">Register</a></li>
+          <li><a href="#login">Login</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </ul>
+    </div>
 
-    <form>
-      <p>Email:</p>
-      <input type="text" id="loginEmail" name="loginEmail">
+    <div id="menu">
+    </div>
 
-      <p>Password:</p>
-      <input type="password" id="loginPassword" name="loginPassword">
+    <div id="content" class="font">
+      <h2>Login</h2>
 
-      <input type="submit" value="Login" id="signOn" name="signOn">
-    </form>
+      <form>
+        <p>Email:</p>
+        <input type="text" id="loginEmail" name="loginEmail">
+
+        <p>Password:</p>
+        <input type="password" id="loginPassword" name="loginPassword">
+        <input type="submit" value="Login" id="signOn" name="signOn">
+      </form>
+    </div>
+
+    <div id="footer" class="footer font">
+      © 2018 Braydon Burn & Bertrand Dungon
+    </div>
   </body>
 </html>

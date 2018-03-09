@@ -52,7 +52,7 @@ li a:hover:not(.active) {
 
 #registrationForms {
   padding-left: 2%;
-  background-color: grey;
+  background-color: silver;
   width: 35%;
   position: absolute;
   left: 63%;
@@ -61,4 +61,8 @@ li a:hover:not(.active) {
 .formElement {
   padding-top: 1%;
   padding-bottom: 3%;
+}
+
+.searchBar {
+  padding-left: 2%;
 }

@@ -23,33 +23,42 @@
     <div id="menu">
     </div>
 
-    <div id="content" class="font" style="align: left">
-      <h2>User registration</h2>
-      <form class="registrationForms">
-        <p>Email address:</p>
-        <input type="text" id="registerEmail">
+    <div id="content" class="font">
+      <form id="registrationForms">
+        <h2>User registration</h2>
+        <div class="formElement">
+          <p>Email address:</p>
+          <input type="text" id="registerEmail">
+        </div>
 
-        <p>Full name:</p>
-        <input type="text" class="fullName">
+        <div class="formElement"
+          <p>Full name:</p>
+          <input type="text" id="fullName">
+        </div>
 
-        <p>Birthday:</p>
-        <input type="text" id="day" placeholder="day">
-        <input type="text" id="month" placeholder="month">
-        <input type="text" id="year" placeholder="year">
+        <div class="formElement">
+          <p>Birthday:</p>
+          <input type="text" id="day" placeholder="day">
+          <input type="text" id="month" placeholder="month">
+          <input type="text" id="year" placeholder="year">
+        </div>
 
-        <p>Password</p>
-        <input type="password" id="registerPasswrd" >
+        <div class="formElement">
+          <p>Password:</p>
+          <input type="password" id="registerPasswrd" >
+        </div>
 
-        <p>Confirm Password</p>
-        <input type="password" id="Confirmpasswrd" >
-        <br/>
-        <input type="submit" id="submitAccInfo" >
-      </div>
+        <div class="formElement">
+          <p>Confirm Password:</p>
+          <input type="password" id="Confirmpasswrd" >
+          <br/>
+          <input type="submit" id="submitAccInfo" >
+        </div>
+      </form>
+    </div>
 
       <div id="footer" class="footer font">
         © 2018 Braydon Burn & Bertrand Dungon
       </div>
-
-    </form>
   </body>
 </html>

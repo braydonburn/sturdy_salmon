@@ -49,3 +49,16 @@ li a:hover:not(.active) {
   color: white;
   text-align: center;
 }
+
+#registrationForms {
+  padding-left: 2%;
+  background-color: grey;
+  width: 35%;
+  position: absolute;
+  left: 63%;
+}
+
+.formElement {
+  padding-top: 1%;
+  padding-bottom: 3%;
+}

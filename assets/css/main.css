@@ -66,3 +66,17 @@ li a:hover:not(.active) {
 .searchBar {
   padding-left: 2%;
 }
+
+table {
+  width: 60%;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+.table {
+  padding-top: 5%;
+}
+
+table, th, td {
+  padding: 5px;
+  border: 1px solid black;
+}

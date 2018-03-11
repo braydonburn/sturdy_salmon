@@ -1,77 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Brisbane Connected: search</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
-  </head>
 
-  <body>
-    <div id="header" class="font">
+<head>
+  <meta charset="utf-8">
+  <title>Brisbane Connected: search</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header template -->
+  <div id="header" class="font">
+    <ul>
       <ul>
-        <ul>
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#register">Register</a></li>
-          <li><a href="#login">Login</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#about">About</a></li>
       </ul>
-    </div>
+    </ul>
+  </div>
 
-    <div id="menu">
-    </div>
+  <div id="menu">
+  </div>
 
-    <div id="content" class="font searchBar">
+  <div id="content" class="font searchBar">
 
-      <h3>
+    <h3>
         Text Search
       </h3>
-      <input type="search" id="addressSearch"  placeholder="Enter address">
-      <button>Search</button>
+    <input type="search" id="addressSearch" placeholder="Enter address">
+    <button>Search</button>
 
-      <h3>
+    <h3>
         Suburb Selection
       </h3>
-      <select>
+    <select>
         <option value="Default selection">All suburbs</option>
         <option value="Chermside">Chermside</option>
         <option value="Annerley">Annerley</option>
         <option value="Ashgrove">Ashgrove</option>
       </select>
 
-      <h3>
+    <h3>
         Rating Search
       </h3>
-      <div>
-        <input id="5stars" name="5stars" type="checkbox" checked>
-        <label for="5stars">5 stars</label>
+    <div>
+      <input id="5stars" name="5stars" type="checkbox" checked>
+      <label for="5stars">5 stars</label>
 
-        <input id="4stars" name="4stars" type="checkbox" checked>
-        <label for="4stars">4 stars</label>
+      <input id="4stars" name="4stars" type="checkbox" checked>
+      <label for="4stars">4 stars</label>
 
-        <input id="3stars" name="3stars" type="checkbox" checked>
-        <label for="3stars">3 stars</label>
+      <input id="3stars" name="3stars" type="checkbox" checked>
+      <label for="3stars">3 stars</label>
 
-        <input id="2stars" name="2stars" type="checkbox" checked>
-        <label for="2stars">2 stars</label>
+      <input id="2stars" name="2stars" type="checkbox" checked>
+      <label for="2stars">2 stars</label>
 
-        <input id="1stars" name="1stars" type="checkbox" checked>
-        <label for="1stars">1 stars</label>
+      <input id="1stars" name="1stars" type="checkbox" checked>
+      <label for="1stars">1 stars</label>
 
-        <input id="0stars" name="0stars" type="checkbox" checked>
-        <label for="0stars">0 stars</label>
-      </div>
+      <input id="0stars" name="0stars" type="checkbox" checked>
+      <label for="0stars">0 stars</label>
+    </div>
     <div>
       <h3>Use your location to search</h3>
       <button>Click here for your coordinates</button>
     </div>
   </div>
-    <footer class="footer font">
-  		<h5></h5>
-  		<a>© 2018 Braydon Burn & Bertrand Dungon</a>
-  		<h5></h5>
-  	</footer>
-  </body>
+  <!-- Footer template -->
+  <footer class="footer font">
+    <h5></h5>
+    <a>© 2018 Braydon Burn & Bertrand Dungon</a>
+    <h5></h5>
+  </footer>
+</body>
+
 </html>

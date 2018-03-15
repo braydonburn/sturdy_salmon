@@ -1,5 +1,5 @@
 .content {
-  padding-top: 20%;
+  padding-top: 12%;
   background-image: url("/assets/images/homepageImage.jpg");
   text-align: center;
 }
@@ -105,4 +105,8 @@ table, th, td {
   font-size: 20px;
   padding-bottom: 30px;
   text-align: left;
+}
+
+.search {
+  padding-top: 1%;
 }

@@ -1,3 +1,22 @@
+/*
+This adds padding to the content if the screen is too small so that elements do
+not get covered by the footer
+*/
+@media screen and (max-height: 750px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/*
+This keeps the footer from spilling over at small sizes
+*/
+@media screen and (max-width: 350px) {
+  footer {
+    font-size: 95%;
+  }
+}
+
 .content {
   padding-top: 12%;
   background-image: url("/assets/images/homepageImage.jpg");
@@ -48,14 +67,18 @@ li a:hover:not(.active) {
   background-color: #333;
   color: white;
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #registrationForms {
-  padding-left: 2%;
-  background-color: silver;
-  width: 35%;
-  position: absolute;
-  left: 63%;
+  background-color: #cccccc;
+  width: 270px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  margin-bottom: 0%;
 }
 
 .formElement {

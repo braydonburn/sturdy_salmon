@@ -3,9 +3,6 @@ This adds padding to the content if the screen is too small so that elements do
 not get covered by the footer
 */
 @media screen and (max-height: 750px) {
-  h1 {
-    font-size: 4em;
-  }
   body {
     padding-bottom: 60px;
   }
@@ -16,11 +13,21 @@ This keeps the footer from spilling over at small sizes
 */
 @media screen and (max-width: 350px) {
   h1 {
-    font-size: 2em;
+    font-size: 3em;
   }
   footer {
     font-size: 95%;
   }
+}
+
+@media screen and (min-width: 350px) {
+  h1 {
+    font-size: 4em;
+  }
+}
+
+h1 {
+  color:white;
 }
 
 

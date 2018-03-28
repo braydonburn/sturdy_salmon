@@ -27,34 +27,48 @@
         <h2>User registration</h2>
         <div class="formElement">
           <h4>Email address:</h4>
-          <input type="text" id="registerEmail">
+          <input type="email" id="registerEmail" placeholder="example@email.com" required title="Please enter a valid email">
         </div>
 
         <div class="formElement">
           <h4>Full name:</h4>
-          <input type="text" id="fullName">
+          <input type="text" id="fullName" required>
         </div>
 
         <div class="formElement">
           <h4>Birthday:</h4>
-          <input type="text" id="day" placeholder="day">
+          <input type="text" id="day" placeholder="day" required>
           <br>
-          <input type="text" id="month" placeholder="month">
+          <select required>
+            <option value="" disabled selected hidden>Select Month</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
           <br>
-          <input type="text" id="year" placeholder="year">
+          <input type="text" id="year" placeholder="year" required>
           <br>
         </div>
 
         <div class="formElement">
           <h4>Password:</h4>
-          <input type="password" id="registerPasswrd" >
+          <input type="password" id="registerPasswrd" required title="Please choose a password">
         </div>
 
         <div class="formElement">
           <h4>Confirm Password:</h4>
-          <input type="password" id="Confirmpasswrd" >
+          <input type="password" id="Confirmpasswrd" required title="Please enter your password again">
           <br/>
-          <input type="submit" id="submitAccInfo" >
+          <input type="submit" id="submitAccInfo">
         </div>
       </form>
     </div>

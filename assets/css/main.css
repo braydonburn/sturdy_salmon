@@ -21,12 +21,20 @@ This keeps the footer from spilling over at small sizes
   footer {
     font-size: 95%;
   }
+
 }
 
 @media screen and (min-width: 350px) {
   h1 {
     font-size: 4em;
   }
+  .form {
+    margin-top: 20%;
+  }
+}
+
+html {
+  height: 100%;
 }
 
 h1 {
@@ -74,8 +82,17 @@ li a:hover:not(.active) {
   background-color: #4CAF50;
 }
 
+.header {
+  position:fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+}
+
 .footer {
-  position: fixed;
+  position:fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -84,21 +101,6 @@ li a:hover:not(.active) {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
-}
-
-#registrationForms {
-  background-color: #cccccc;
-  width: 270px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2%;
-  margin-bottom: 0%;
-}
-
-.formElement {
-  padding-top: 1%;
-  padding-bottom: 3%;
 }
 
 .searchBar {
@@ -150,18 +152,46 @@ table, th, td {
   padding-top: 1%;
 }
 
-/*Login form code*/
+/*Homepage code*/
+.colour {
+  color: #fff;
+}
+
+.homepageSubmit {
+  display: block;
+  background: #4CAF50;
+  width: 5%;
+  padding: 12px;
+  cursor: pointer;
+  color: #fff;
+  border: 0px;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 17px;
+}
+/*Homepage Code*/
+
+/*Login & Registration form code*/
 .form{
   text-align: center;
   width: 70%;
   height: 20%;
   background: #edeff1;
   margin: 0px auto;
-  margin-top: 14%;
+  margin-top: 5%;
   padding-top: 1%;
   padding-bottom: 2%;
   border-radius: 10px;
 
+}
+
+.registration {
+  margin-bottom: 5%;
+}
+
+h4 {
+  text-align: left;
+  padding-left: 19.5%;
 }
 
 input[type="text"]{
@@ -196,6 +226,19 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
   background: #09cca6
+}
+
+select {
+  display: block;
+  width: 61%;
+  height: 35px;
+  margin: 15px auto;
+  background: #fff;
+  border: 0px;
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid #fff;
+  border-radius: 5px;
 }
 
 /*End login form code*/

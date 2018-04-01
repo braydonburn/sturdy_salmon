@@ -1,45 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Brisbane Connected: registration</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
-  </head>
 
-  <body>
-    <!-- Header template -->
-    <div id="header" class="font">
-      <ul>
-          <!-- NavLinks -->
-          <li><a href="index.html">Home</a></li>
-          <li><a class="active" href="registrationPage.html">Register</a></li>
-          <li><a href="loginPage.html">Login</a></li>
-          <li><a href="searchPage.html">Search</a></li>
-          <!-- NavLinks -->
-      </ul>
-    </div>
-    <!-- End Header template -->
+<head>
+  <meta charset="utf-8">
+  <title>Brisbane Connected: registration</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+</head>
 
-    <div id="content" class="font">
-      <form id="registrationForms">
-        <h2>User registration</h2>
-        <div class="formElement">
-          <h4>Email address:</h4>
-          <input type="email" id="registerEmail" placeholder="example@email.com" required title="Please enter a valid email">
-        </div>
+<body>
+  <!-- Header template -->
+  <div class="header font">
+    <ul>
+      <!-- NavLinks -->
+      <li><a href="index.html">Home</a></li>
+      <li><a class="active" href="registrationPage.html">Register</a></li>
+      <li><a href="loginPage.html">Login</a></li>
+      <li><a href="searchPage.html">Search</a></li>
+      <!-- NavLinks -->
+    </ul>
+  </div>
+  <!-- End Header template -->
 
-        <div class="formElement">
-          <h4>Full name:</h4>
-          <input type="text" id="fullName" required>
-        </div>
-
-        <div class="formElement">
-          <h4>Birthday:</h4>
-          <input type="text" id="day" placeholder="day" required>
-          <br>
-          <select required>
+  <div id="content" class="font form registration">
+    <form id="registrationForms">
+      <h2>User registration</h2>
+      <input type="text" placeholder="full name">
+      <input type="text" placeholder="username">
+      <input type="text" placeholder="example@email.com">
+      <br>
+      <h4>Birth Date</h4>
+      <input type="text" placeholder="day">
+      <select>
             <option value="" disabled selected hidden>Select Month</option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -53,33 +46,24 @@
             <option value="October">October</option>
             <option value="November">November</option>
             <option value="December">December</option>
-          </select>
-          <br>
-          <input type="text" id="year" placeholder="year" required>
-          <br>
-        </div>
+      </select>
+      <input type="text" placeholder="year">
+      <br>
+      <input type="text" placeholder="password">
+      <input type="text" placeholder="confirm password">
+      <br>
+      <input id="termsAndCond" type="checkbox" required title="Please agree to the terms and conditions">
+      <label for="termsAndCond">I agree to the terms and conditions</label>
+      <br><br>
+      <input type="submit" id="submitAccInfo">
+    </form>
+  </div>
 
-        <div class="formElement">
-          <h4>Password:</h4>
-          <input type="password" id="registerPasswrd" required title="Please choose a password">
-        </div>
+  <!-- Footer template -->
+  <footer class="footer font">
+    <a>© 2018 Braydon Burn & Bertrand Dungan</a>
+  </footer>
+  <!-- End Footer template -->
+</body>
 
-        <div class="formElement">
-          <h4>Confirm Password:</h4>
-          <input type="password" id="Confirmpasswrd" required title="Please enter your password again">
-          <br>
-          <input id="termsAndCond" type="checkbox" required title="Please agree to the terms and conditions">
-          <label for="termsAndCond">I agree to the terms and conditions</label>
-          <br>
-          <input type="submit" id="submitAccInfo">
-        </div>
-      </form>
-    </div>
-
-    <!-- Footer template -->
-    <footer class="footer font">
-      <a>© 2018 Braydon Burn & Bertrand Dungan</a>
-    </footer>
-  	<!-- End Footer template -->
-  </body>
 </html>

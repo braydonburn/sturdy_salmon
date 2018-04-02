@@ -5,6 +5,7 @@
     <title>Brisbane Connected: login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
   </head>
 
@@ -27,10 +28,13 @@
 
     <div id="login" class="font form">
       <h2>Login to your account</h2>
-      <form>
-        <input type="text" title="username" placeholder="email"/>
-        <input type="text" title="username" placeholder="password"/>
-        <input type="submit" value="Login"/>
+      <form id="myForm">
+        <input type="text" name="email" placeholder="email"/>
+        <span id="emailMissing" class="error-message">Valid email is required</span>
+        <input type="text" name="password" placeholder="password"/>
+        <span id="passwordMissing" class="error-message">Valid password is required</span>
+        <br><br>
+        <input type="submit" onclick="validate();return false;" value="Login"/>
       </form>
     </div>
 

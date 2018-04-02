@@ -152,6 +152,11 @@ table, th, td {
   padding-top: 1%;
 }
 
+.error-message {
+  color: red;
+  visibility: hidden;
+}
+
 /*Homepage code*/
 .colour {
   color: #fff;

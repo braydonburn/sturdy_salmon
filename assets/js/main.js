@@ -6,6 +6,7 @@ function getLocation() {
   } else {
     errorDisplay.innerHTML = "Geolocation is unavailable";
   }
+
   function showPosition(position) {
     searchField.value = position.coords.latitude + " " + position.coords.longitude;
   }
@@ -17,26 +18,38 @@ function validateLogin() {
 }
 
 function validateRegistration() {
-  validateEmpty();
-  validateEmail();
-  validateDate();
+validateEmpty();
+validateEmail();
+validateDate();
+validateCheckbox();
 }
 
 //Validates email using regex expressions
 function validateEmail() {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.forms["myForm"]["email"].value)) {
-    return(true);
+    return (true);
   }
   //Displays error message if test fails
   document.getElementById("emailMissing").style.visibility = "visible";
   return false;
 }
 
+//Check if checkbox is checked, else return true
+function validateCheckbox() {
+  var y = document.forms["myForm"]["agree"].checked;
+  if (y === false) {
+    alert("Oops! You forgot to agree to the terms and conditions.");
+    return false;
+  } else {
+    return true;
+  }
+}
+
 //Checks if password is empty, displays error if not
 function validatePassword() {
   if ((document.forms["myForm"]["password"].value) === "") {
     document.getElementById("passwordMissing").style.visibility = "visible";
-    return(false);
+    return (false);
   }
   return true;
 }
@@ -49,6 +62,8 @@ function validateDate() {
   if ((isNaN(day)) || (day > 31) || (day <= 0) || (isNaN(year)) || (year > 2018) || (year < 1900)) {
     document.getElementById("dateMissing").style.visibility = "visible";
     x = false;
+  } else {
+    return true;
   }
 }
 

@@ -1,22 +1,29 @@
+
+// Geolocation code
 function getLocation() {
   errorDisplay = document.getElementById("status");
   searchField = document.getElementById("addressSearch");
+  // This will check if geolocation is available and display an error if not
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
     errorDisplay.innerHTML = "Geolocation is unavailable";
   }
-
+  // If geolocation is available, this will display current cordinates
   function showPosition(position) {
     searchField.value = position.coords.latitude + " " + position.coords.longitude;
   }
 }
 
+// Login validation function
+// validates all relevant forms
 function validateLogin() {
   validateEmail();
   validatePassword();
 }
 
+// Registration validation function
+//validates all relevant forms
 function validateRegistration() {
 validateEmpty();
 validateEmail();

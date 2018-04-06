@@ -1,4 +1,8 @@
+/*
+This is the font used for the website
+*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
+
 /*
 This adds padding to the content if the screen is too small so that elements do
 not get covered by the footer
@@ -31,7 +35,6 @@ This keeps the footer from spilling over at small sizes
   footer {
     font-size: 95%;
   }
-
 }
 
 @media screen and (min-width: 350px) {
@@ -42,6 +45,10 @@ This keeps the footer from spilling over at small sizes
     margin-top: 20%;
   }
 }
+
+/*
+End @media requests
+*/
 
 html {
   height: 100%;
@@ -187,6 +194,7 @@ table, th, td {
 /*Homepage Code*/
 
 /*Login & Registration form code*/
+
 .form{
   text-align: center;
   width: 70%;
@@ -256,6 +264,12 @@ select {
   border-radius: 5px;
 }
 
+/*End login form code*/
+
+/*
+Geolocation styling
+*/
+
 #geoLocateIcon {
   font-size: 48px;
 }
@@ -286,7 +300,9 @@ select {
   background: #09cca6
 }
 
-/*End login form code*/
+/*
+End Geolocation code
+*/
 
 /* Homepage Video Code */
 

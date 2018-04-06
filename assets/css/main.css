@@ -209,7 +209,7 @@ h4 {
   padding-left: 19.5%;
 }
 
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="search"]{
   display: block;
   width: 60%;
   height: 35px;
@@ -222,7 +222,7 @@ input[type="text"], input[type="password"]{
   border-radius: 5px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus{
+input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:focus{
   border: 2px solid #1abc9d
 }
 
@@ -254,6 +254,36 @@ select {
   font-size: 16px;
   border: 2px solid #fff;
   border-radius: 5px;
+}
+
+#geoLocateIcon {
+  font-size: 48px;
+}
+
+#geoLocateButton {
+  background: inherit;
+  cursor: inherit;
+  color: inherit;
+  border: 0px;
+  font-size: 17px;
+}
+
+#geoLocateDiv {
+  display: inline-block;
+  background: #4CAF50;
+  width: 50%;
+  padding-top: 6px;
+  padding-bottom: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#geoLocateDiv:hover {
+  background: #09cca6
 }
 
 /*End login form code*/

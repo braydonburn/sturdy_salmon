@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   <script src="assets/js/main.js"></script>
 </head>
 
@@ -27,13 +28,13 @@
   </div>
   <!-- End Header template -->
 
-  <div id="content" class="font searchBar">
+  <div id="content" class="font searchBar form">
 
     <h3>
         Text Search
-      </h3>
+    </h3>
     <input type="search" id="addressSearch" placeholder="Enter address">
-    <button>Search</button>
+    <input type="submit" value="Search">
 
     <h3>
         Suburb Selection
@@ -71,12 +72,15 @@
 
       <input id="0stars" name="0stars" type="checkbox" checked>
       <label for="0stars">0 stars</label>
+      <br>
     </div>
-    <div>
+
       <h3>Use your location to search</h3>
-      <button onclick="getLocation()">Click here for your coordinates</button>
-      <p id="status"></p>
-    </div>
+      <div id="geoLocateDiv" onclick="getLocation()">
+        <span id="geoLocateIcon" class="fas fa-map-marker-alt"></span>
+        <button id="geoLocateButton">Click here for your coordinates</button>
+        <p id="status"></p>
+      </div>
   </div>
 
   <!-- Footer template -->

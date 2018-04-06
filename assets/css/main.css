@@ -11,6 +11,16 @@ not get covered by the footer
 }
 
 /*
+This keeps the footer from covering content on medium screens (like tablets)
+*/
+
+@media screen and (max-height: 850px) {
+  body {
+    padding-bottom: 35px;
+  }
+}
+
+/*
 This keeps the footer from spilling over at small sizes
 */
 

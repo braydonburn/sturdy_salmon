@@ -9,30 +9,31 @@
   <title>Search</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <script src="assets/js/main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
 </head>
 
 <body>
   <!-- Header template -->
-  <div id="header" class="font">
+  <div class="header font">
     <ul>
-        <!-- NavLinks -->
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="registrationPage.html">Register</a></li>
-        <li><a href="loginPage.html">Login</a></li>
-        <li><a href="searchPage.html">Search</a></li>
-        <!-- NavLinks -->
+      <!-- NavLinks -->
+      <li><a href="index.html">Home</a></li>
+      <li><a href="registrationPage.html">Register</a></li>
+      <li><a href="loginPage.html">Login</a></li>
+      <li><a class="active" href="searchPage.html">Search</a></li>
+      <!-- NavLinks -->
     </ul>
   </div>
   <!-- End Header template -->
 
   <div class="font resultName">
-    <h1>Brisbane Square Library Wifi</h1>
+    <h2>Brisbane Square Library Wifi</h2>
     <div id="map">
     </div>
 
     <div class="font">
-      <h1>Reviews</h1>
+      <h2>Reviews</h2>
     </div>
     <div class="review">
       <h3>David: ★ ★ ★ ★ ☆</h3>
@@ -53,29 +54,11 @@
   </div>
 
 
-  </div>
   <!-- Footer template -->
   <footer class="footer font">
     <a>© 2018 Braydon Burn & Bertrand Dungan</a>
   </footer>
   <!-- End Footer template -->
-
-
-  <script>
-    function myMap() {
-      var myCenter = new google.maps.LatLng(-27.47091173, 153.0224598);
-      var mapCanvas = document.getElementById("map");
-      var mapOptions = {
-        center: myCenter,
-        zoom: 18
-      };
-      var map = new google.maps.Map(mapCanvas, mapOptions);
-      var marker = new google.maps.Marker({
-        position: myCenter
-      });
-      marker.setMap(map);
-    }
-  </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=myMap"></script>
 </body>

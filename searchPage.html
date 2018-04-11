@@ -27,12 +27,12 @@
   <!-- Header template -->
   <div id="header" class="font">
     <ul>
-        <!-- NavLinks -->
-        <li><a href="index.html">Home</a></li>
-        <li><a href="registrationPage.html">Register</a></li>
-        <li><a href="loginPage.html">Login</a></li>
-        <li><a class="active" href="searchPage.html">Search</a></li>
-        <!-- NavLinks -->
+      <!-- NavLinks -->
+      <li><a href="index.html">Home</a></li>
+      <li><a href="registrationPage.html">Register</a></li>
+      <li><a href="loginPage.html">Login</a></li>
+      <li><a class="active" href="searchPage.html">Search</a></li>
+      <!-- NavLinks -->
     </ul>
   </div>
   <!-- End Header template -->
@@ -43,7 +43,7 @@
         Text Search
     </h3>
     <input type="search" id="addressSearch" placeholder="Enter address">
-    <input type="submit" value="Search">
+    <input type="submit" value="Search" onclick="location.href='resultsPage.html';">
 
     <h3>
         Suburb Selection
@@ -84,19 +84,19 @@
       <br>
     </div>
 
-      <h3>Use your location to search</h3>
-      <div id="geoLocateDiv" onclick="getLocation()">
-        <span id="geoLocateIcon" class="fas fa-map-marker-alt"></span>
-        <button id="geoLocateButton">Click here for your coordinates</button>
-        <p id="status"></p>
-      </div>
+    <h3>Use your location to search</h3>
+    <div id="geoLocateDiv" onclick="getLocation()">
+      <span id="geoLocateIcon" class="fas fa-map-marker-alt"></span>
+      <button id="geoLocateButton">Click here for your coordinates</button>
+      <p id="status"></p>
+    </div>
   </div>
 
   <!-- Footer template -->
   <footer class="footer font">
     <a>© 2018 Braydon Burn & Bertrand Dungan</a>
   </footer>
-	<!-- End Footer template -->
+  <!-- End Footer template -->
 </body>
 
 </html>

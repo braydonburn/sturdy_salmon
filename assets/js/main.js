@@ -1,3 +1,19 @@
+//On page open, show spinner until page is loaded
+function ready(callback) {
+  // in case the document is already rendered
+  if (document.readyState != 'loading') callback();
+  // modern browsers
+  else if (document.addEventListener) document.addEventListener('DOMContentLoaded', callback);
+  // IE <= 8
+  else document.attachEvent('onreadystatechange', function() {
+    if (document.readyState == 'complete') callback();
+  });
+}
+
+ready(function() {
+  var element = document.getElementById("overlay");
+  element.parentNode.removeChild(element);
+});
 
 // Geolocation code
 function getLocation() {
@@ -39,10 +55,10 @@ function validateLogin() {
 // Registration validation function
 //validates all relevant forms
 function validateRegistration() {
-validateEmpty();
-validateEmail();
-validateDate();
-validateCheckbox();
+  validateEmpty();
+  validateEmail();
+  validateDate();
+  validateCheckbox();
 }
 
 //Validates email using regex expressions

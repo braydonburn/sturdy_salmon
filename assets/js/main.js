@@ -53,13 +53,25 @@ function validateLogin() {
 }
 
 // Registration validation function
-//validates all relevant forms
+//validates all relevant forms and returns true if all forms are correctly filled
 function validateRegistration() {
-  return validateEmpty();
-  return validateEmail();
-  return validateDate();
-  return validateCheckbox();
-  return validatePassword();
+  x = true;
+  if (!(validateEmpty())) {
+    x = false;
+  }
+  if (!(validateEmail())) {
+    x = false;
+  }
+  if (!(validateDate())) {
+    x = false;
+  }
+  if (!(validateCheckbox())) {
+    x = false;
+  }
+  if (!(validatePassword())) {
+    x = false;
+  }
+  return x;
 }
 
 //Validates email using regex expressions
@@ -85,7 +97,7 @@ function validateCheckbox() {
 
 //Checks if password is empty, displays error if not
 function validatePassword() {
-  if ((document.forms["myForm"]["password"].value) === document.forms["myForm"]["confirmPassword"].value) {
+  if ((document.forms["myForm"]["password"].value) === (document.forms["myForm"]["confirmPassword"].value)) {
     return true;
   }
   document.getElementById("confirmPass").style.visibility = "visible";
@@ -144,7 +156,7 @@ function validateEmpty() {
   }
 }
 
-//These statements check if text has been changed to hide the error message
+//These statements check if text has been changed and hide the error message
 function formChange() {
   if ((document.forms["myForm"]["fullName"].value) != "") {
     document.getElementById("nameMissing").style.visibility = "hidden";

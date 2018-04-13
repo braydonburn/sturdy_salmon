@@ -55,16 +55,17 @@ function validateLogin() {
 // Registration validation function
 //validates all relevant forms
 function validateRegistration() {
-  validateEmpty();
-  validateEmail();
-  validateDate();
-  validateCheckbox();
+  return validateEmpty();
+  return validateEmail();
+  return validateDate();
+  return validateCheckbox();
+  return validatePassword();
 }
 
 //Validates email using regex expressions
 function validateEmail() {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.forms["myForm"]["email"].value)) {
-    return (true);
+    return true;
   }
   //Displays error message if test fails
   document.getElementById("emailMissing").style.visibility = "visible";
@@ -84,13 +85,14 @@ function validateCheckbox() {
 
 //Checks if password is empty, displays error if not
 function validatePassword() {
-  if ((document.forms["myForm"]["password"].value) === "") {
-    document.getElementById("passwordMissing").style.visibility = "visible";
-    return (false);
+  if ((document.forms["myForm"]["password"].value) === document.forms["myForm"]["confirmPassword"].value) {
+    return true;
   }
-  return true;
+  document.getElementById("confirmPass").style.visibility = "visible";
+  return false;
 }
 
+//Checks the date is within normal boundries and shows an error if it is not
 function validateDate() {
   var x = true;
   var day = document.forms["myForm"]["day"].value;
@@ -104,7 +106,7 @@ function validateDate() {
   }
 }
 
-//Various if statements to check if values are empty
+//Various if statements to check if values are empty and shows an error if they are
 function validateEmpty() {
   var x = true;
   if ((document.forms["myForm"]["fullName"].value) === "") {
@@ -120,7 +122,7 @@ function validateEmpty() {
     x = false;
   }
   if ((document.forms["myForm"]["confirmPassword"].value) === "") {
-    document.getElementById("passwordMissing").style.visibility = "visible";
+    document.getElementById("confirmPass").style.visibility = "visible";
     x = false;
   }
   if ((document.forms["myForm"]["day"].value) === "") {
@@ -139,5 +141,36 @@ function validateEmpty() {
     return true;
   } else {
     return false;
+  }
+}
+
+//These statements check if text has been changed to hide the error message
+function formChange() {
+  if ((document.forms["myForm"]["fullName"].value) != "") {
+    document.getElementById("nameMissing").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["month"].value) != "") {
+    document.getElementById("dateMissing").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["password"].value) != "") {
+    document.getElementById("passwordMissing").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["confirmPassword"].value) != "") {
+    document.getElementById("confirmPass").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["day"].value) != "") {
+    document.getElementById("dateMissing").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["year"].value) != "") {
+    document.getElementById("dateMissing").style.visibility = "hidden";
+  }
+  if ((document.forms["myForm"]["username"].value) != "") {
+    document.getElementById("usernameMissing").style.visibility = "hidden";
+  }
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.forms["myForm"]["email"].value)) {
+    document.getElementById("emailMissing").style.visibility = "hidden";
+  }
+  else {
+    document.getElementById("emailMissing").style.visibility = "visible";
   }
 }

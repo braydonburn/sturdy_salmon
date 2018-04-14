@@ -389,3 +389,33 @@ End Geolocation code
   }
 }
 /*End Loading Spinner*/
+
+/* Buttons for sorting results*/
+.sortButton{
+  display: inline;
+  background: #4CAF50;
+  width: 17%;
+  padding: 8px;
+  cursor: pointer;
+  color: #fff;
+  border: 0px;
+  margin: auto;
+  font-size: 17px;
+  border-radius: 5px;
+  margin-top: 3%;
+}
+
+#hotspotSort {
+  margin-left: 18%;
+  float: left;
+}
+
+#addressSort {
+  margin-left: 6.5%;
+}
+
+#starSort {
+  float: right;
+  margin-right: 18%;
+}
+/* end button for sorting results */

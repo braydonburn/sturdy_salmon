@@ -31,6 +31,7 @@ function getLocation() {
   }
 }
 
+// This function creates the Google map to show wifi locations
 function myMap() {
   var myCenter = new google.maps.LatLng(-27.47091173, 153.0224598);
   var mapCanvas = document.getElementById("map");

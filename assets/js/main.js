@@ -46,10 +46,16 @@ function myMap() {
 }
 
 // Login validation function
-// validates all relevant forms
+// validates all relevant forms and returns true if are all correctly filled
 function validateLogin() {
-  validateEmail();
-  validatePassword();
+  x = true;
+  if (!(validateEmail())) {
+    x = false;
+  }
+  if (!(validateEmail())) {
+    x = false;
+  }
+  return x;
 }
 
 // Registration validation function

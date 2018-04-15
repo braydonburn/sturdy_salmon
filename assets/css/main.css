@@ -132,6 +132,8 @@ table {
 
 .table {
   padding-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 table, th, td {
@@ -175,10 +177,6 @@ table, th, td {
 }
 
 /*Homepage code*/
-.colour {
-  color: #fff;
-}
-
 .homepageSubmit {
   display: block;
   background: #4CAF50;
@@ -190,6 +188,7 @@ table, th, td {
   margin: auto;
   border-radius: 5px;
   font-size: 17px;
+  color: #fff;
 }
 /*Homepage Code*/
 

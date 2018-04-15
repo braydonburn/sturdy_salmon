@@ -50,12 +50,10 @@ This keeps the footer from spilling over at small sizes
 End @media requests
 */
 
+/* css relevant for the whole website */
+
 html {
   height: 100%;
-}
-
-#mainPageTitle {
-  color: #fff;
 }
 
 .content {
@@ -69,30 +67,6 @@ html {
 
 body {
   margin: 0;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
 }
 
 .active {
@@ -120,20 +94,60 @@ li a:hover:not(.active) {
   padding-bottom: 20px;
 }
 
-.searchBar {
-  padding-left: 2%;
+.error-message {
+  color: red;
+  visibility: hidden;
 }
+/* End code relevant to the entire website */
 
+/* Result page code */
 table {
   width: 60%;
   border-collapse: collapse;
   border-spacing: 0px;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
 .table {
   padding-top: 5%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.table th{
+  background-color: #4CAF50;
+}
+
+.table tr {
+    transition: background 0.2s ease-in;
+}
+
+.table tr:hover {
+    background: silver;
+    cursor: pointer;
 }
 
 table, th, td {
@@ -148,13 +162,6 @@ table, th, td {
   padding-bottom: 5%;
 }
 
-#map {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 500px;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -166,15 +173,7 @@ table, th, td {
   padding-bottom: 30px;
   text-align: left;
 }
-
-.search {
-  padding-top: 1%;
-}
-
-.error-message {
-  color: red;
-  visibility: hidden;
-}
+/* End result page code */
 
 /*Homepage code*/
 .homepageSubmit {
@@ -190,9 +189,29 @@ table, th, td {
   font-size: 17px;
   color: #fff;
 }
-/*Homepage Code*/
 
-/*Login & Registration form code*/
+#mainPageTitle {
+  color: #fff;
+}
+/*End Homepage code*/
+
+/* Individual result code */
+#map {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 500px;
+}
+/* End individual result code */
+
+
+/* Search page code*/
+.search {
+  padding-top: 1%;
+}
+/* End search page code */
+
+/*Login and Registration form code*/
 
 .form{
   text-align: center;
@@ -263,7 +282,7 @@ select {
   border-radius: 5px;
 }
 
-/*End login form code*/
+/*End login and registration form code*/
 
 /*
 Geolocation styling
@@ -315,21 +334,6 @@ End Geolocation code
 }
 
 /* /Homepage Video Code */
-
-/*Results Page Table Code*/
-.table th{
-  background-color: #4CAF50;
-}
-
-.table tr {
-    transition: background 0.2s ease-in;
-}
-
-.table tr:hover {
-    background: silver;
-    cursor: pointer;
-}
-/*/Results Page Table Code*/
 
 /*Loading Spinner*/
 .onLoad {

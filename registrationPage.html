@@ -36,6 +36,7 @@
   </div>
   <!-- End Header template -->
 
+  <!-- Registration form content -->
   <div id="content" class="font form registration">
     <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()">
       <h2>User registration</h2>
@@ -48,7 +49,7 @@
       <br>
       <h4>Birth Date</h4>
       <input type="text" name="day" placeholder="day" maxlength="2" required pattern="[1-9]{1,2}">
-      <select name="month" required>
+<!-- Dropdown box for each month -->      <select name="month" required>
             <option value="" disabled selected hidden>Select Month</option>
             <option value="January">January</option>
             <option value="February">February</option>

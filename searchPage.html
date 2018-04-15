@@ -39,25 +39,20 @@
 
   <div id="content" class="font searchBar form">
 
-    <h3>
-        Text Search
-    </h3>
+    <h3>Text Search</h3>
     <input type="search" id="addressSearch" placeholder="Enter address">
     <input type="submit" value="Search" onclick="location.href='resultsPage.html';">
 
-    <h3>
-        Suburb Selection
-      </h3>
+    <h3>Suburb Selection</h3>
     <select>
         <option value="Default selection">All suburbs</option>
         <option value="Chermside">Chermside</option>
         <option value="Annerley">Annerley</option>
         <option value="Ashgrove">Ashgrove</option>
-      </select>
+    </select>
 
-    <h3>
-        Rating Search
-      </h3>
+    <!-- Checkbox to search by rating -->
+    <h3>Rating Search</h3>
     <div>
       <input id="5stars" name="5stars" type="checkbox" checked>
       <label for="5stars">5 stars</label>
@@ -84,6 +79,7 @@
       <br>
     </div>
 
+    <!-- Geolocation div to grab current users location -->
     <h3>Use your location to search</h3>
     <div id="geoLocateDiv" onclick="getLocation()">
       <span id="geoLocateIcon" class="fas fa-map-marker-alt"></span>

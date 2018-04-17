@@ -12,7 +12,6 @@ function ready(callback) {
 
 ready(function() {
   var element = document.getElementById("overlay");
-  element.parentNode.removeChild(element);
 });
 
 // Geolocation code

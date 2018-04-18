@@ -52,6 +52,11 @@ This keeps the footer from spilling over at small sizes
   }
 }
 
+@media screen and (max-width: 325px) {
+  .header {
+    font-size: 14px;
+  }
+}
 /*
 End @media requests
 */
@@ -86,6 +91,7 @@ body {
   width: 100%;
   background-color: #333;
   color: white;
+  z-index: 9999;
 }
 
 .footer {
@@ -168,6 +174,15 @@ table, th, td {
   padding-bottom: 5%;
 }
 
+#map {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 500px;
+  z-index: 0;
+  position: fixed;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -179,7 +194,17 @@ table, th, td {
   padding-bottom: 30px;
   text-align: left;
 }
-/* End result page code */
+
+.search {
+  padding-top: 1%;
+}
+
+.error-message {
+  color: red;
+  visibility: hidden;
+}
+/*End Classes used globaly throughout site*/
+
 
 /*Homepage code*/
 .homepageSubmit {
@@ -195,6 +220,7 @@ table, th, td {
   font-size: 17px;
   color: #fff;
 }
+/*End Homepage Code*/
 
 #mainPageTitle {
   color: #fff;
@@ -233,7 +259,8 @@ table, th, td {
 }
 
 .registration {
-  margin-bottom: 5%;
+  margin-top: 7%;
+  margin-bottom: 7%;
 }
 
 h4 {
@@ -288,7 +315,7 @@ select {
   border-radius: 5px;
 }
 
-/*End login and registration form code*/
+/*End login & registration form code*/
 
 /*
 Geolocation styling
@@ -381,8 +408,8 @@ End Geolocation code
 .spinner-1:after {
   position: absolute;
   border: 4px solid transparent;
-  border-top-color: orangered;
-  border-bottom-color: orangered;
+  border-top-color: #4CAF50;
+  border-bottom-color: #4CAF50;
   animation: spinny 1s linear infinite;
 }
 

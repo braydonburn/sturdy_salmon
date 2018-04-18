@@ -47,8 +47,21 @@ This keeps the footer from spilling over at small sizes
 }
 
 @media screen and (max-width: 1000px) {
-  #regoForm {
-    margin-top: 30%;
+  .registration {
+    margin-top: 15% !important;
+    margin-bottom: 10% !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .registration {
+    margin-bottom: 15% !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .registration {
+    margin-top: 20% !important;
   }
 }
 

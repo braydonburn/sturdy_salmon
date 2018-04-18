@@ -12,6 +12,7 @@ function ready(callback) {
 
 ready(function() {
   var element = document.getElementById("overlay");
+  element.parentNode.removeChild(element);
 });
 
 // Geolocation code
@@ -187,8 +188,7 @@ function formChange() {
   }
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.forms["myForm"]["email"].value)) {
     document.getElementById("emailMissing").style.visibility = "hidden";
-  }
-  else {
+  } else {
     document.getElementById("emailMissing").style.visibility = "visible";
   }
 }

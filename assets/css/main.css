@@ -46,6 +46,12 @@ This keeps the footer from spilling over at small sizes
   }
 }
 
+@media screen and (max-width: 1000px) {
+  #regoForm {
+    margin-top: 30%;
+  }
+}
+
 /*
 End @media requests
 */

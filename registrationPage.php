@@ -1,3 +1,4 @@
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,13 +39,14 @@
 
   <!-- Registration form content -->
   <div id="regoForm" class="font form registration">
-    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()">
+    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()"  method="post" action="register.php">
+      <?php include('errors.php'); ?>
       <h2>User registration</h2>
-      <input type="text" name="fullName" placeholder="full name" required>
+      <input type="text" name="fullName" placeholder="full name" value="<?php echo $fullname; ?>" required>
       <span id="nameMissing" class="error-message">Valid name is required</span>
-      <input type="text" name="username" placeholder="username" required>
+      <input type="text" name="username" placeholder="username" value="<?php echo $username; ?>"required>
       <span id="usernameMissing" class="error-message">Valid username is required</span>
-      <input type="email" name="email" placeholder="example@email.com" required>
+      <input type="email" name="email" placeholder="example@email.com" value="<?php echo $email; ?>" required>
       <span id="emailMissing" class="error-message">Valid email is required</span>
       <br>
       <h4>Birth Date</h4>

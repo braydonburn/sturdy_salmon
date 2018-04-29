@@ -25,16 +25,10 @@
 
 <body>
   <!-- Header template -->
-  <div class="header font">
-    <ul>
-      <!-- NavLinks -->
-      <li><a href="index.html">Home</a></li>
-      <li><a class="active" href="registrationPage.html">Register</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a href="searchPage.html">Search</a></li>
-      <!-- NavLinks -->
-    </ul>
-  </div>
+  <?php
+  include 'assets/php/functions.php';
+  genHead();
+  ?>
   <!-- End Header template -->
 
   <!-- Registration form content -->

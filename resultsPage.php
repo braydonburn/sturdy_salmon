@@ -23,16 +23,10 @@
 
 <body>
   <!-- Header template -->
-  <div id="header" class="font">
-    <ul>
-      <!-- NavLinks -->
-      <li><a href="index.html">Home</a></li>
-      <li><a href="registrationPage.html">Register</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a class="active" href="searchPage.html">Search</a></li>
-      <!-- NavLinks -->
-    </ul>
-  </div>
+  <?php
+  include 'assets/php/functions.php';
+  genHead();
+  ?>
   <!-- End Header template -->
 
   <!-- Using a center-aligned table to produce the sample results page. -->
@@ -58,7 +52,7 @@
           <td>★ ★ ★ ☆ ☆ </td>
         </tr>
         <tr>
-          <td><a href="individualResults.html">Brisbane Square Library Wifi</a></td>
+          <td><a href="individualResults.php">Brisbane Square Library Wifi</a></td>
           <td>Brisbane Square, 266 George Street, Brisbane, 4000</td>
           <td>★ ★ ★ ★ ☆ </td>
         </tr>

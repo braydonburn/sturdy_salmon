@@ -25,23 +25,17 @@
 
 <body>
   <!-- Header template -->
-  <div id="header" class="header font">
-    <ul>
-      <!-- NavLinks -->
-      <li><a href="index.html">Home</a></li>
-      <li><a href="registrationPage.html">Register</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a class="active" href="searchPage.html">Search</a></li>
-      <!-- NavLinks -->
-    </ul>
-  </div>
+  <?php
+  include 'assets/php/functions.php';
+  genHead();
+  ?>
   <!-- End Header template -->
 
   <div id="content" class="font form">
 
     <h3>Text Search</h3>
     <input type="search" id="addressSearch" placeholder="Enter address">
-    <input type="submit" value="Search" onclick="location.href='resultsPage.html';">
+    <input type="submit" value="Search" onclick="location.href='resultsPage.php';">
 
     <h3>Suburb Selection</h3>
     <select>

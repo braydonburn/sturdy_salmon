@@ -1,15 +1,15 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="Braydon Burn">
-  <title>Brisbane Connected</title>
+  <meta name="author" content="Braydon Burn & Bertrand Dungan">
+  <title>Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
-	<script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600,700" rel="stylesheet">
 
   <!-- Favicon -->
@@ -23,49 +23,31 @@
 </head>
 
 <body>
-
-	<!-- Adds a spinner loading animation during page load -->
-  <div id="overlay" class="onLoad">
-    <h5 class="font spinnerText" style="padding-top: 20%">Loading</h5>
-    <div class="spinner spinner-1">
-    </div>
-  </div>
-
   <!-- Header template -->
-  <div id="header" class="header font">
-    <ul>
-      <!-- NavLinks -->
-      <li><a class="active" href="index.html">Home</a></li>
-      <li><a href="registrationPage.html">Register</a></li>
-      <li><a href="loginPage.html">Login</a></li>
-      <li><a href="searchPage.html">Search</a></li>
-      <!-- NavLinks -->
-    </ul>
-  </div>
+  <?php
+  include 'assets/php/functions.php';
+  genHead();
+  ?>
   <!-- End Header template -->
 
-  <!-- Background Video -->
-  <video autoplay muted loop id="myVideo">
-	  <source src="assets/BrisbaneCBD.mp4" type="video/mp4">
-	</video>
-  <!-- /Background Video -->
-
-  <!-- Inner content -->
-  <div class="content font">
-    <h1 id="mainPageTitle">Brisbane Connected</h1>
-    <h3>Find free wifi in your area</h3>
-    <div class="search">
-      <p><a class="homepageSubmit" href="searchPage.html">Search</a></p>
-    </div>
+  <!-- Login form content -->
+  <div id="login" class="font form">
+    <h2>Login to your account</h2>
+    <form id="myForm" onsubmit="return validateLogin()">
+      <input type="text" name="email" placeholder="email" required/>
+      <span id="emailMissing" class="error-message">Valid email is required</span>
+      <input type="password" name="password" placeholder="password" required/>
+      <span id="passwordMissing" class="error-message">Valid password is required</span>
+      <br><br>
+      <input type="submit" onclick="validateLogin()" value="Login" />
+    </form>
   </div>
-  <!-- /Inner content -->
 
   <!-- Footer template -->
   <footer class="footer font">
     <a>© 2018 Braydon Burn & Bertrand Dungan</a>
   </footer>
   <!-- End Footer template -->
-
 </body>
 
 </html>

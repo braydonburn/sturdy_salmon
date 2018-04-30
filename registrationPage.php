@@ -26,26 +26,35 @@
 <body>
   <!-- Header template -->
   <?php
-  include 'assets/php/functions.php';
+  require 'assets/php/functions.php';
+  include 'errors.php';
+  $errors = array();
   genHead();
   ?>
   <!-- End Header template -->
 
   <!-- Registration form content -->
   <div id="regoForm" class="font form registration">
-    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()"  method="post" action="register.php">
-      <?php include('errors.php'); ?>
+    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()"  method="post" action="registerConfirm.php">
+
       <h2>User registration</h2>
-      <input type="text" name="fullName" placeholder="full name" value="<?php echo $fullname; ?>" required>
+      <?php
+      formGen($errors, 'text', 'fullName', 'Full Name', 'nameMissing');
+      ?>
       <span id="nameMissing" class="error-message">Valid name is required</span>
-      <input type="text" name="username" placeholder="username" value="<?php echo $username; ?>"required>
+      <?php
+      formGen($errors, 'text', 'username', 'Username', 'usernameMissing');
+      ?>
       <span id="usernameMissing" class="error-message">Valid username is required</span>
-      <input type="email" name="email" placeholder="example@email.com" value="<?php echo $email; ?>" required>
+      <?php
+      formGen($errors, 'email', 'email', 'example@email.com', 'emailMissing');
+      ?>
       <span id="emailMissing" class="error-message">Valid email is required</span>
       <br>
       <h4>Birth Date</h4>
-      <input type="text" name="day" placeholder="day" maxlength="2" required pattern="[0-9]{1,2}">
-<!-- Dropdown box for each month -->      <select name="month" required>
+      <input type="text" name="day" placeholder="Day" maxlength="2" required pattern="[0-9]{1,2}">
+<!-- Dropdown box for each month -->
+      <select name="month" required>
             <option value="" disabled selected hidden>Select Month</option>
             <option value="January">January</option>
             <option value="February">February</option>
@@ -60,12 +69,16 @@
             <option value="November">November</option>
             <option value="December">December</option>
       </select>
-      <input type="text" name="year" placeholder="year" maxlength="4" required pattern="\d{4}">
+      <input type="text" name="year" placeholder="Year" maxlength="4" required pattern="\d{4}">
       <span id="dateMissing" class="error-message">Valid date is required</span>
       <br>
-      <input type="password" name="password" placeholder="password" required>
+      <?php
+      formGen($errors, 'password', 'password', 'Password', 'passwordMissing')
+       ?>
       <span id="passwordMissing" class="error-message">Valid password is required</span>
-      <input type="password" name="confirmPassword" placeholder="confirm password" required>
+      <?php
+      formGen($errors, 'password', 'confirmPassword', 'Confirm Password', 'confirmPass')
+       ?>
       <span id="confirmPass" class="error-message">Please confirm your passwords match</span>
       <br>
       <input id="termsAndCond" type="checkbox" name="agree" title="Please agree to the terms and conditions" required>

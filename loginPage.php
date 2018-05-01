@@ -33,7 +33,8 @@
   <!-- Login form content -->
   <div id="login" class="font form">
     <h2>Login to your account</h2>
-    <form id="myForm" onsubmit="return validateLogin()">
+    <form id="myForm" onsubmit="return validateLogin()" method="post" action="loginPage.php">
+      <?php include('errors.php'); ?>
       <input type="text" name="email" placeholder="email" required/>
       <span id="emailMissing" class="error-message">Valid email is required</span>
       <input type="password" name="password" placeholder="password" required/>
@@ -42,7 +43,6 @@
       <input type="submit" onclick="validateLogin()" value="Login" />
     </form>
   </div>
-
   <!-- Footer template -->
   <footer class="footer font">
     <a>© 2018 Braydon Burn & Bertrand Dungan</a>

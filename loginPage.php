@@ -62,13 +62,13 @@
   <!-- Login form content -->
   <div id="login" class="font form">
     <h2>Login to your account</h2>
-    <form id="myForm" onsubmit="return validateLogin()" method="post" action="searchPage.php">
+    <form id="myForm" name="login" onsubmit="return validateLogin()" method="post" action="">
       <input type="text" name="email" placeholder="email" required/>
       <span id="emailMissing" class="error-message">Valid email is required</span>
       <input type="password" name="password" placeholder="password" required/>
       <span id="passwordMissing" class="error-message">Valid password is required</span>
       <br><br>
-      <input type="submit" onclick="validateLogin()" value="Login" />
+      <input name="submit" type="submit" onclick="validateLogin()" value="Login" />
     </form>
   </div>
 

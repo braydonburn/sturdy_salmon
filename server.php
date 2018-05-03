@@ -1,6 +1,6 @@
 <?php
 //Host, username, password, database below.
-$con = mysqli_connect("localhost","root","","register");
+$con = mysqli_connect("localhost","root","dreadman1","cab230");
 // Check connection
 if (mysqli_connect_errno())
   {

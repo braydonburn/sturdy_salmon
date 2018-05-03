@@ -28,9 +28,10 @@
   <?php
   include 'assets/php/functions.php';
   require('server.php');
+  session_start();
+
   genHead();
 
-  session_start();
 
   // If form submitted, insert values into the database.
   if (isset($_POST['email'])){

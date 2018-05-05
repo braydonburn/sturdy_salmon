@@ -1,7 +1,6 @@
-<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php include('server.php') ?>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,47 +38,32 @@
 
       <h2>User registration</h2>
       <?php
-      formGen($errors, 'text', 'fullName', 'Full Name', 'nameMissing');
+      formGen($errors, 'text', 'fullName', 'Full Name', 'nameMissing', 'Valid name is required', '','');
       ?>
-      <span id="nameMissing" class="error-message">Valid name is required</span>
       <?php
-      formGen($errors, 'text', 'username', 'Username', 'usernameMissing');
+      formGen($errors, 'text', 'username', 'Username', 'usernameMissing', 'Valid username is required', '', '');
       ?>
-      <span id="usernameMissing" class="error-message">Valid username is required</span>
       <?php
-      formGen($errors, 'email', 'email', 'example@email.com', 'emailMissing');
+      formGen($errors, 'email', 'email', 'example@email.com', 'emailMissing', 'Valid email is required', '', '');
       ?>
-      <span id="emailMissing" class="error-message">Valid email is required</span>
       <br>
       <h4>Birth Date</h4>
-      <input type="text" name="day" placeholder="Day" maxlength="2" required pattern="[0-9]{1,2}">
-<!-- Dropdown box for each month -->
-      <select name="month" required>
-            <option value="" disabled selected hidden>Select Month</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-      </select>
-      <input type="text" name="year" placeholder="Year" maxlength="4" required pattern="\d{4}">
-      <span id="dateMissing" class="error-message">Valid date is required</span>
+      <?php
+      formGen($errors, 'text', 'day', 'Day', '', '', '2', '[0-9]{1,2}');
+      ?>
+      <?php
+      dropdownList();
+       ?>
+      <?php
+      formGen($errors, 'text', 'year', 'Year', 'dateMissing', 'Valid date is required', '4', '\d{4}');
+      ?>
       <br>
       <?php
-      formGen($errors, 'password', 'password', 'Password', 'passwordMissing')
+      formGen($errors, 'password', 'password', 'Password', 'passwordMissing', 'Valid password is required', '','');
        ?>
-      <span id="passwordMissing" class="error-message">Valid password is required</span>
       <?php
-      formGen($errors, 'password', 'confirmPassword', 'Confirm Password', 'confirmPass')
+      formGen($errors, 'password', 'confirmPassword', 'Confirm Password', 'confirmPass', 'Please confirm your passwords match', '', '');
        ?>
-      <span id="confirmPass" class="error-message">Please confirm your passwords match</span>
       <br>
       <input id="termsAndCond" type="checkbox" name="agree" title="Please agree to the terms and conditions" required>
       <label for="termsAndCond">I agree to the terms and conditions</label>

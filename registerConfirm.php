@@ -1,4 +1,5 @@
 <?php
+    require('server.php');
     $errors = array();
     if (isset($_POST['email'])) {
         #require 'assets/php/validate.php';
@@ -16,8 +17,9 @@
             $email = mysqli_real_escape_string($con, $email);
             $password = stripslashes($_REQUEST['password']);
             $password = mysqli_real_escape_string($con, $password);
+            //Code here for birth date
 
-            $query = "INSERT into `users` (username, password, email, trn_date) VALUES ('$fullname', '$username', '$email', '".md5($password)."')";
+            $query = "INSERT into `users` (fullname, username, email, password) VALUES ('$fullname', '$username', '$email', '".md5($password)."')";
             $result = mysqli_query($con, $query);
             if ($result) {
                 echo "<h3>You are registered successfully.</h3>";

@@ -19,7 +19,7 @@
             $password = mysqli_real_escape_string($con, $password);
             //Code here for birth date
 
-            $query = "INSERT into `users` (fullname, username, email, password) VALUES ('$fullname', '$username', '$email', '".md5($password)."')";
+            $query = "INSERT into `Members` (fullname, username, email, password) VALUES ('$fullname', '$username', '$email', '".md5($password)."')";
             $result = mysqli_query($con, $query);
             if ($result) {
                 echo "<h3>You are registered successfully.</h3>";

@@ -6,3 +6,13 @@ CREATE TABLE IF NOT EXISTS `Members` (
  `password` varchar(50) NOT NULL,
  PRIMARY KEY (`id`)
  );
+
+CREATE TABLE IF NOT EXISTS `Items` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `hotspotName` varchar(50) NOT NULL,
+ `address` varchar(100) NOT NULL,
+ `suburb` varchar(50) NOT NULL,
+ `latitude` bigint(50) NOT NULL,
+ `longitude` bigint(50) NOT NULL,
+ PRIMARY KEY (`id`)
+ );

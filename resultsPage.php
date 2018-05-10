@@ -24,8 +24,11 @@
 <body>
   <!-- Header template -->
   <?php
-  include 'assets/php/functions.php';
+  include('assets/php/functions.php');
+  include('server.php');
   genHead();
+
+  print("$output");
   ?>
   <!-- End Header template -->
 

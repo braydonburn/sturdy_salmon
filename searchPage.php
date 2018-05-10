@@ -26,15 +26,37 @@
 <body>
   <!-- Header template -->
   <?php
-  include 'assets/php/functions.php';
+  include('assets/php/functions.php');
+  include('server.php');
   genHead();
+  $output = '';
+
+  if (isset($_POST['search'])) {
+    $searchq = $_POST['search'];
+
+    $query = mysqli_query("SELECT * FROM Items WHERE hotspotName LIKE '%$searchq%' OR suburb LIKE '%$searchq%'") or die("Could not complete search.");
+    $count = mysqli_num_rows($query);
+
+    if ($count == 0) {
+      $output = 'There were no search results, sorry.';
+    } else {
+      while ($row = mysqli_fetch_array($query)) {
+        $hotspotName = $row['hotspotName'];
+        $address = $row['address'];
+        $suburb = $row['suburb'];
+
+        $output .= '<div> '.$hotspotName.' '.$address.' </div>';
+      }
+    }
+  }
+
   ?>
   <!-- End Header template -->
 
-  <div id="content" class="font form">
+  <form id="content" action="resultsPage.php" method="post" class="font form">
 
     <h3>Text Search</h3>
-    <input type="search" id="addressSearch" placeholder="Enter address">
+    <input type="search" name="search" id="addressSearch" placeholder="Enter address">
     <input type="submit" value="Search" onclick="location.href='resultsPage.php';">
 
     <h3>Suburb Selection</h3>
@@ -80,7 +102,7 @@
       <button id="geoLocateButton">Click here for your coordinates</button>
       <p id="status"></p>
     </div>
-  </div>
+  </form>
 
   <!-- Footer template -->
   <footer class="footer font">

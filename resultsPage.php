@@ -28,7 +28,24 @@
   include('server.php');
   genHead();
 
-  print("$output");
+  $output = '';
+
+  $query = "SELECT * FROM `Items`";
+  $result = mysqli_query($con, $query) or die(mysql_error());
+
+    $count = mysqli_num_rows($result);
+
+    if ($count == 0) {
+        $output = 'There were no search results, sorry.';
+    } else {
+        while ($row = mysqli_fetch_array($result)) {
+            $hotspotName = $row['hotspotName'];
+            $address = $row['address'];
+            $suburb = $row['suburb'];
+
+            $output .= '<div>'.$hotspotName.' '.$address.'</div>';
+        }
+    }
   ?>
   <!-- End Header template -->
 
@@ -62,6 +79,8 @@
       </tbody>
     </table>
   </div>
+
+  <?php print("$output"); ?>
 
   <!-- Footer template -->
   <footer class="footer font">

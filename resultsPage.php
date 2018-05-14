@@ -28,24 +28,34 @@
   include('server.php');
   genHead();
 
+  if (isset($_GET['search_input'])) {
+      $search = $_GET['search_input'];
+  } else {
+      $search = "";
+  }
   $output = '';
 
-  $query = "SELECT * FROM `Items`";
-  $result = mysqli_query($con, $query) or die(mysql_error());
+  $query = "SELECT *
+            FROM Items
+            WHERE hotspotName
+            LIKE '%$search%'
+            OR suburb
+            LIKE '%$search%'";
+  $result = mysqli_query($con, $query) or die(mysqli_error());
 
-    $count = mysqli_num_rows($result);
+  $count = mysqli_num_rows($result);
 
-    if ($count == 0) {
-        $output = 'There were no search results, sorry.';
-    } else {
-        while ($row = mysqli_fetch_array($result)) {
-            $hotspotName = $row['hotspotName'];
-            $address = $row['address'];
-            $suburb = $row['suburb'];
+  if ($count == 0) {
+      $output = 'There were no search results, sorry.';
+  } else {
+      while ($row = mysqli_fetch_array($result)) {
+          $hotspotName = $row['hotspotName'];
+          $address = $row['address'];
+          $suburb = $row['suburb'];
 
-            $output .= '<div>'.$hotspotName.' '.$address.'</div>';
-        }
-    }
+          $output .= '<div>'.$hotspotName.' '.$address.'</div>';
+      }
+  }
   ?>
   <!-- End Header template -->
 

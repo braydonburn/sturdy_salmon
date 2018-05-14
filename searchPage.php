@@ -29,35 +29,21 @@
   include('assets/php/functions.php');
   include('server.php');
   genHead();
-  $output = '';
 
-  if (isset($_POST['search'])) {
-    $searchq = $_POST['search'];
-
-    $query = mysqli_query("SELECT * FROM Items WHERE hotspotName LIKE '%$searchq%' OR suburb LIKE '%$searchq%'") or die("Could not complete search.");
-    $count = mysqli_num_rows($query);
-
-    if ($count == 0) {
-      $output = 'There were no search results, sorry.';
-    } else {
-      while ($row = mysqli_fetch_array($query)) {
-        $hotspotName = $row['hotspotName'];
-        $address = $row['address'];
-        $suburb = $row['suburb'];
-
-        $output .= '<div> '.$hotspotName.' '.$address.' </div>';
-      }
-    }
+  if (isset($_GET['search_input'])) {
+      $_SESSION['search_input'] = $_GET['search_input'];
+  } else {
+    $_SESSION['search_input']="";
   }
 
   ?>
   <!-- End Header template -->
 
-  <form id="content" action="resultsPage.php" method="post" class="font form">
+  <form id="content" action="resultsPage.php" method="GET" class="font form">
 
     <h3>Text Search</h3>
-    <input type="search" name="search" id="addressSearch" placeholder="Enter address">
-    <input type="submit" value="Search" onclick="location.href='resultsPage.php';">
+    <input type="search" name="search_input" id="addressSearch" placeholder="Enter address">
+    <input type="submit" value="Search">
 
     <h3>Suburb Selection</h3>
     <select>

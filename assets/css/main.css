@@ -127,9 +127,10 @@ body {
 
 /* Result page code */
 table {
-  width: 60%;
+  width: 80%;
   border-collapse: collapse;
   border-spacing: 0px;
+  background: #edeff1;
 }
 
 ul {
@@ -264,11 +265,11 @@ table, th, td {
   height: 20%;
   background: #edeff1;
   margin: 0px auto;
-  margin-top: 5%;
   padding-top: 1%;
   padding-bottom: 2%;
   border-radius: 10px;
-
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .registration {

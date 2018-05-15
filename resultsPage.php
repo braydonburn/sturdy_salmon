@@ -53,7 +53,7 @@
           $address = $row['address'];
           $suburb = $row['suburb'];
 
-          $output .= '<div>'.$hotspotName.' '.$address.'</div>';
+          $output .= '<tr><td><a href="individualResults.php">'.$hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
       }
   }
   ?>
@@ -66,31 +66,15 @@
         <tr>
           <th>Hotspot Name</th>
           <th>Address</th>
-          <th>Star Rating</th>
+          <th>Suburb</th>
         </tr>
       </thead>
       <!-- href for link to individual results. -->
       <tbody>
-        <tr>
-          <td><a href="#">Annerley Library Wifi</a></td>
-          <td>450 Ipswich Road, Annerley, 4103</td>
-          <td>★ ☆ ☆ ☆ ☆ </td>
-        </tr>
-        <tr>
-          <td><a href="#">Booker Place Park</a></td>
-          <td>Birkin Rd & Sugarwood St, Bellbowrie</td>
-          <td>★ ★ ★ ☆ ☆ </td>
-        </tr>
-        <tr>
-          <td><a href="individualResults.php">Brisbane Square Library Wifi</a></td>
-          <td>Brisbane Square, 266 George Street, Brisbane, 4000</td>
-          <td>★ ★ ★ ★ ☆ </td>
-        </tr>
+        <?php print("$output"); ?>
       </tbody>
     </table>
   </div>
-
-  <?php print("$output"); ?>
 
   <!-- Footer template -->
   <footer class="footer font">

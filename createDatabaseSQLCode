@@ -12,5 +12,7 @@ CREATE TABLE IF NOT EXISTS `Items` (
  `address` varchar(100) NOT NULL,
  `suburb` varchar(50) NOT NULL,
  `latitude` double NOT NULL,
- `longitude` double NOT NULL
+ `longitude` double NOT NULL,
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ PRIMARY KEY (`id`)
  );

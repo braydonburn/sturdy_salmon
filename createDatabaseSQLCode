@@ -1,20 +1,18 @@
 CREATE TABLE IF NOT EXISTS `Members` (
- `id` int(11) NOT NULL AUTO_INCREMENT,
+ `id` int(11) PRIMARY KEY AUTO_INCREMENT,
  `fullname` varchar(50) NOT NULL,
  `username` varchar(50) NOT NULL,
+ `birthday` date NOT NULL,
  `email` varchar(50) NOT NULL,
  `password` varchar(50) NOT NULL,
- PRIMARY KEY (`id`)
+ `salt` varchar(64) NOT NULL
  );
 
 CREATE TABLE IF NOT EXISTS `Items` (
+ `id` int(10) PRIMARY KEY AUTO_INCREMENT,
  `hotspotName` varchar(100) NOT NULL,
  `address` varchar(100) NOT NULL,
  `suburb` varchar(50) NOT NULL,
  `latitude` double NOT NULL,
- `longitude` double NOT NULL,
- `id` int(11) NOT NULL AUTO_INCREMENT,
- PRIMARY KEY (`id`)
+ `longitude` double NOT NULL
  );
-
-ALTER TABLE `Items` ADD `id` INT(10) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`id`);

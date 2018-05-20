@@ -1,10 +1,10 @@
 <?php
     require('server.php');
     $errors = array();
-    if (isset($_POST['email'])) {
-        #require 'assets/php/validate.php';
-        #validateEmail($errors, $_POST, 'email');
-        if ($errors) {
+    if (!empty($_POST)) {
+        require 'assets/php/validate.php';
+        formValidate($errors, $_POST['email'], $_POST['day'],$_POST['month'], $_POST['year'], $_POST['fullName'], $_POST['username'], $_POST['password'], $_POST['confirmPassword']);
+        if (count($errors)>0) {
             echo "<h3>Error1.</h3>";
             include 'registrationPage.php';
         } else {

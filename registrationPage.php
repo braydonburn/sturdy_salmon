@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include('server.php') ?>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,43 +26,44 @@
   <!-- Header template -->
   <?php
   require 'assets/php/functions.php';
-  include 'errors.php';
-  $errors = array();
   genHead();
+  if (empty($_POST)) {
+    $errors = array();
+  }
   ?>
   <!-- End Header template -->
 
   <!-- Registration form content -->
   <div id="regoForm" class="font form registration">
-    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()"  method="post" action="registerConfirm.php">
+    <form id="myForm" onchange="formChange()" onsubmit="return validateRegistration()"  method="post" action="registerConfirm.php" novalidate>
 
       <h2>User registration</h2>
       <?php
-      formGen($errors, 'text', 'fullName', 'Full Name', 'nameMissing', 'Valid name is required', '','');
+      formGen('text', 'fullName', 'Full Name', 'nameMissing', $errors, '','');
       ?>
       <?php
-      formGen($errors, 'text', 'username', 'Username', 'usernameMissing', 'Valid username is required', '', '');
+      formGen('text', 'username', 'Username', 'usernameMissing', $errors, '', '');
       ?>
       <?php
-      formGen($errors, 'email', 'email', 'example@email.com', 'emailMissing', 'Valid email is required', '', '');
+      formGen('email', 'email', 'example@email.com', 'emailMissing', $errors, '', '');
       ?>
       <br>
       <h4>Birth Date</h4>
       <?php
-      formGen($errors, 'text', 'day', 'Day', '', '', '2', '[0-9]{1,2}');
+      formGen('text', 'day', 'Day', '', '', '2', '[0-9]{1,2}');
       ?>
       <?php
       dropdownList();
        ?>
       <?php
-      formGen($errors, 'text', 'year', 'Year', 'dateMissing', 'Valid date is required', '4', '\d{4}');
+      formGen('text', 'year', 'Year', 'dateMissing', $errors, '4', '\d{4}');
       ?>
       <br>
       <?php
-      formGen($errors, 'password', 'password', 'Password', 'passwordMissing', 'Valid password is required', '','');
+      formGen('password', 'password', 'Password', 'passwordMissing', $errors, '','');
        ?>
       <?php
-      formGen($errors, 'password', 'confirmPassword', 'Confirm Password', 'confirmPass', 'Please confirm your passwords match', '', '');
+      formGen('password', 'confirmPassword', 'Confirm Password', 'confirmPass', $errors, '', '');
        ?>
       <br>
       <input id="termsAndCond" type="checkbox" name="agree" title="Please agree to the terms and conditions" required>
@@ -78,5 +79,4 @@
   </footer>
   <!-- End Footer template -->
 </body>
-
 </html>

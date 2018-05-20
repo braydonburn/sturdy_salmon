@@ -1,4 +1,6 @@
 <?php
+#This function generates the headers that appear on each page and changes which
+#one looks liked it is selected based on which page the user is on
 function genHead() {
   echo '<div id="header" class="header font">
       <ul>
@@ -30,7 +32,7 @@ function genHead() {
     </div>';
 }
 
-# This checks if forms already have data in them
+# This sanitises data imputs to avoid cross scripting attacks
 function getFormValue($name) {
   if(isset($_POST[$name])) {
     return htmlspecialchars(stripslashes($_POST[$name]));
@@ -38,8 +40,8 @@ function getFormValue($name) {
 }
 
 # This generates appropriate forms based on the input and the error messages if set
-function formGen($errors, $type, $name, $placeholderText, $errorID,
-$errorMessage, $maxLength, $pattern) {
+function formGen($type, $name, $placeholderText, $errorID,
+$errors, $maxLength, $pattern) {
   $value = getFormValue($name);
   echo '<input type="'.$type.'" name="'.$name.'" placeholder="'.$placeholderText
   .'" value="'.$value;
@@ -52,8 +54,8 @@ $errorMessage, $maxLength, $pattern) {
     echo '" pattern="'.$pattern;
   }
   echo '" required>';
-  if(strlen($errorID)>0) {
-    echo '<span id="'.$errorID.'" class="error-message">'.$errorMessage.'</span>';
+  if(strlen($errorID)>0 && isset($errors[$errorID])) {
+    echo '<span id="'.$errorID.'" class="error-message">'.$errors[$errorID].'</span>';
   }
 }
 

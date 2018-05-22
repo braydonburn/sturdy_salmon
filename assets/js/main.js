@@ -32,8 +32,14 @@ function getLocation() {
 }
 
 // This function creates the Google map to show wifi locations
+//Pass php lat/long variables to js
+var latitude = "<?php echo $latitude; ?>";
+var longitude = "<?php echo $longitude; ?>";
+
+console.log(latitude);
+
 function myMap() {
-  var myCenter = new google.maps.LatLng(-27.47091173, 153.0224598);
+  var myCenter = new google.maps.LatLng(latitude, longitude);
   var mapCanvas = document.getElementById("map");
   var mapOptions = {
     center: myCenter,

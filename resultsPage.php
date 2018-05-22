@@ -49,11 +49,12 @@
       $output = 'There were no search results, sorry.';
   } else {
       while ($row = mysqli_fetch_array($result)) {
+          $id = $row['id'];
           $hotspotName = $row['hotspotName'];
           $address = $row['address'];
           $suburb = $row['suburb'];
 
-          $output .= '<tr><td><a href="individualResults.php">'.$hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
+          $output .= '<tr><td><a href="individualResults.php?id='.$id.'">'.$hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
       }
   }
   ?>

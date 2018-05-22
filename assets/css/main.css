@@ -184,15 +184,6 @@ table, th, td {
   padding-bottom: 5%;
 }
 
-#map {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  height: 500px;
-  z-index: 0;
-  position: fixed;
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -243,6 +234,8 @@ table, th, td {
   margin: 0;
   padding: 0;
   height: 500px;
+  z-index: 0;
+  position: fixed;
 }
 /* End individual result code */
 

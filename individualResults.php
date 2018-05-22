@@ -25,16 +25,65 @@
 <body>
   <!-- Header template -->
   <?php
-  include 'assets/php/functions.php';
+  include('assets/php/functions.php');
+  include('server.php');
   genHead();
+
+  if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+  }
+
+  $output = '';
+
+  $query = "SELECT *
+            FROM Items
+            WHERE id
+            LIKE '%$id%'";
+  $result = mysqli_query($con, $query) or die(mysqli_error());
+
+  $count = mysqli_num_rows($result);
+
+  if ($count == 0) {
+      $output = 'There was an error finding the result you searched for, sorry.';
+  } else {
+      while ($row = mysqli_fetch_array($result)) {
+          $hotspotName = $row['hotspotName'];
+          $address = $row['address'];
+          $suburb = $row['suburb'];
+          $latitude = $row['latitude'];
+          $longitude = $row['longitude'];
+      }
+  }
   ?>
   <!-- End Header template -->
 
+  <script type="text/javascript">
+  // This function creates the Google map to show wifi locations
+  //Pass php lat/long variables to js
+  var latitude = "<?php echo $latitude; ?>";
+  var longitude = "<?php echo $longitude; ?>";
+
+  function myMap() {
+    var myCenter = new google.maps.LatLng(latitude, longitude);
+    var mapCanvas = document.getElementById("map");
+    var mapOptions = {
+      center: myCenter,
+      zoom: 18
+    };
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+    var marker = new google.maps.Marker({
+      position: myCenter
+    });
+    marker.setMap(map);
+  }
+  </script>
+
   <!-- Individual results form with reviews -->
   <div class="font resultName">
-    <h2>Brisbane Square Library Wifi</h2>
+    <h2><?php print("$hotspotName"); ?></h2>
     <div id="map">
     </div>
+    <h1><?php print("$output"); ?></h1>
 
     <div class="font">
       <h2>Reviews</h2>
@@ -65,5 +114,6 @@
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=myMap"></script>
 </body>
+
 
 </html>

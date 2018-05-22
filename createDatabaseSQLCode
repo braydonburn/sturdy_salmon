@@ -1,11 +1,9 @@
 CREATE TABLE IF NOT EXISTS `Members` (
- `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+ `username` varchar(50) PRIMARY KEY NOT NULL,
  `fullname` varchar(50) NOT NULL,
- `username` varchar(50) NOT NULL,
  `birthday` date NOT NULL,
  `email` varchar(50) NOT NULL,
- `password` varchar(50) NOT NULL,
- `salt` varchar(64) NOT NULL
+ `password` varchar(255) NOT NULL
  );
 
 CREATE TABLE IF NOT EXISTS `Items` (

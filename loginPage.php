@@ -27,34 +27,35 @@
 
   <?php
   include 'assets/php/functions.php';
-  require('server.php');
   session_start();
 
   genHead();
 
-
   // If form submitted, insert values into the database.
-  if (isset($_POST['email'])) {
-      // removes backslashes
-      $email = stripslashes($_REQUEST['email']);
-      //escapes special characters in a string
-      $email = mysqli_real_escape_string($con, $email);
-      $password = stripslashes($_REQUEST['password']);
-      $password = mysqli_real_escape_string($con, $password);
+  if (isset($_POST['username'])) {
+      $username = ($_POST['username']);
+      $password = ($_POST['password']);
       //Checking is user existing in the database or not
-      $query = "SELECT * FROM `Members` WHERE email='$email'
-      and password='".md5($password)."'";
-      $result = mysqli_query($con, $query) or die(mysql_error());
-      $rows = mysqli_num_rows($result);
-      if ($rows==1) {
-          // Redirect user to searchpage.php
+      $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+      $query = $pdo->prepare("SELECT username, password FROM `Members` WHERE username=:username");
+      $query->bindvalue(':username', $username);
+      $query->execute();
+      $passwordHash = $query->fetchColumn(1);
+
+      if ($query) {
+        if (password_verify($password, $passwordHash)) {
           header("Location: searchPage.php");
+        } else {
+            echo "<div class='form'>
+                  <h3>Username/password is incorrect.</h3>
+                  </div>";
+        }
       } else {
-          echo "<div class='form'>
-                <h3>Username/password is incorrect.</h3>
-                </div>";
+        echo "<div class='form'>
+              <h3>There was a database error.</h3>
+              </div>";
       }
-  } else {
+  }
   ?>
 
   <!-- End Header template -->
@@ -63,7 +64,7 @@
   <div id="login" class="font form">
     <h2>Login to your account</h2>
     <form id="myForm" name="login" onsubmit="return validateLogin()" method="post" action="">
-      <input type="text" name="email" placeholder="email" required/>
+      <input type="text" name="username" placeholder="username" required/>
       <span id="emailMissing" class="error-message">Valid email is required</span>
       <input type="password" name="password" placeholder="password" required/>
       <span id="passwordMissing" class="error-message">Valid password is required</span>
@@ -77,9 +78,6 @@
     <a>© 2018 Braydon Burn & Bertrand Dungan</a>
   </footer>
   <!-- End Footer template -->
-<?php
-  } ?>
 
 </body>
-
 </html>

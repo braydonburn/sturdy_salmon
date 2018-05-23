@@ -1,4 +1,5 @@
 <?php
+session_start();
 #This function generates the headers that appear on each page and changes which
 #one looks liked it is selected based on which page the user is on
 function genHead() {
@@ -27,8 +28,11 @@ function genHead() {
     echo 'active';
   }
     echo '" href="searchPage.php">Search</a></li>
-        <!-- NavLinks -->
-      </ul>
+        <!-- NavLinks -->';
+    if (isset($_SESSION['username'])) {
+      echo '<li>The user currently logged in is: '.$_SESSION['username'].'</li>';
+    } else {echo 'You are not currently logged in';}
+    echo '</ul>
     </div>';
 }
 

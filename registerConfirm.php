@@ -65,13 +65,13 @@
             #This code is currently just for error checking, I'll update it
             #later so that it only shows errors users need, like having the same
             #username as someone else and needing to choose a different one
-            if ($query) {
-              echo $query->rowCount();
-              echo "\nPDO::errorInfo():\n";
-              print_r($query->errorInfo());
+            if (($query->rowCount())>0) {
+              include 'loginPage.php';
+              echo "<h1>You are successfully registered</h1>";
             } else {
-              echo "\nPDO::errorInfo():\n";
-              print_r($query->errorInfo());
+              $errors['usernameMissing'] = 'Please choose a different username';
+              include 'registrationPage.php';
+              echo "<h1>Please choose a different username</h1>";
             }
         }
     } else {

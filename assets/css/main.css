@@ -1,8 +1,8 @@
 /*
 This is the font used for the website
 */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
 /*
 This adds padding to the content if the screen is too small so that elements do
 not get covered by the footer
@@ -70,6 +70,7 @@ This keeps the footer from spilling over at small sizes
     font-size: 14px;
   }
 }
+
 /*
 End @media requests
 */
@@ -98,7 +99,7 @@ body {
 }
 
 .header {
-  position:fixed;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -108,7 +109,7 @@ body {
 }
 
 .footer {
-  position:fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -122,6 +123,7 @@ body {
 /* End code relevant to the entire website */
 
 /* Result page code */
+
 table {
   width: 80%;
   border-collapse: collapse;
@@ -159,17 +161,17 @@ li a:hover:not(.active) {
   margin-right: auto;
 }
 
-.table th{
+.table th {
   background-color: #4CAF50;
 }
 
 .table tr {
-    transition: background 0.2s ease-in;
+  transition: background 0.2s ease-in;
 }
 
 .table tr:hover {
-    background: silver;
-    cursor: pointer;
+  background: silver;
+  cursor: pointer;
 }
 
 table, th, td {
@@ -204,10 +206,11 @@ table, th, td {
   color: red;
   visibility: hidden;
 }
+
 /*End Classes used globaly throughout site*/
 
-
 /*Homepage code*/
+
 .homepageSubmit {
   display: block;
   background: #4CAF50;
@@ -221,14 +224,17 @@ table, th, td {
   font-size: 17px;
   color: #fff;
 }
+
 /*End Homepage Code*/
 
 #mainPageTitle {
   color: #fff;
 }
+
 /*End Homepage code*/
 
 /* Individual result code */
+
 #map {
   width: 100%;
   margin: 0;
@@ -237,18 +243,45 @@ table, th, td {
   z-index: 0;
   position: fixed;
 }
+
 /* End individual result code */
 
+/*Code for individual results review section*/
+
+textarea {
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+  "review" "comment";
+  padding-bottom: 70px;
+}
+
+@media screen and (max-width: 600px) {
+  .review-left {
+    grid-area: review;
+  }
+
+  .review-right {
+    grid-area: comment;
+  }
+}
+
+/*End Code for individual results review section*/
 
 /* Search page code*/
+
 .search {
   padding-top: 1%;
 }
+
 /* End search page code */
 
 /*Login and Registration form code*/
 
-.form{
+.form {
   text-align: center;
   width: 70%;
   height: 20%;
@@ -271,7 +304,7 @@ h4 {
   padding-left: 19.5%;
 }
 
-input[type="text"], input[type="password"], input[type="search"], input[type="email"]{
+input[type="text"], input[type="password"], input[type="search"], input[type="email"] {
   display: block;
   width: 60%;
   height: 35px;
@@ -284,11 +317,11 @@ input[type="text"], input[type="password"], input[type="search"], input[type="em
   border-radius: 5px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="search"]:focus{
+input[type="text"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="search"]:focus {
   border: 2px solid #1abc9d
 }
 
-input[type="submit"]{
+input[type="submit"] {
   display: block;
   background: #4CAF50;
   width: 50%;
@@ -301,7 +334,7 @@ input[type="submit"]{
   font-size: 17px;
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover {
   background: #09cca6
 }
 
@@ -372,6 +405,7 @@ End Geolocation code
 /* /Homepage Video Code */
 
 /*Loading Spinner*/
+
 .onLoad {
   height: 100%;
   width: 100%;
@@ -427,4 +461,5 @@ End Geolocation code
     transform: rotate(360deg) scale(1);
   }
 }
+
 /*End Loading Spinner*/

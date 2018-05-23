@@ -79,32 +79,54 @@
   </script>
 
   <!-- Individual results form with reviews -->
-  <div class="font resultName">
-    <h2><?php print("$hotspotName"); ?></h2>
-    <div id="map">
-    </div>
-    <h1><?php print("$output"); ?></h1>
+    <div class="font resultName">
+      <h2><?php print("$hotspotName"); ?></h2>
+      <div id="map">
+      </div>
+      <h1><?php print("$output"); ?></h1>
+      <div class="grid-container">
 
-    <div class="font">
-      <h2>Address</h2>
-      <p><?php print("$address"); ?></p>
-      <h2>Reviews</h2>
-    </div>
-    <div class="review">
-      <h3>David: ★ ★ ★ ★ ☆</h3>
-      <p>Easy to connect to and decent speed.</p>
-    </div>
-    <div class="review">
-      <h3>Lauren: ★ ★ ★ ☆ ☆</h3>
-      <p>Speed could be better.</p>
-    </div>
-    <div class="review">
-      <h3>Jason: ★ ★ ★ ★ ★</h3>
-      <p>Easy connection and fast speed.</p>
-    </div>
-    <div class="review">
-      <h3>Libby: ★ ★ ☆ ☆ ☆</h3>
-      <p>Terrible speed but easy to connect to.</p>
+        <div class="review-left">
+          <div class="font">
+            <h2>Address</h2>
+            <p><?php print("$address"); ?></p>
+            <h2>Reviews</h2>
+          </div>
+
+          <div class="review">
+            <h3>David: ★ ★ ★ ★ ☆</h3>
+            <p>Easy to connect to and decent speed.</p>
+          </div>
+          <div class="review">
+            <h3>Lauren: ★ ★ ★ ☆ ☆</h3>
+            <p>Speed could be better.</p>
+          </div>
+          <div class="review">
+            <h3>Jason: ★ ★ ★ ★ ★</h3>
+            <p>Easy connection and fast speed.</p>
+          </div>
+          <div class="review">
+            <h3>Libby: ★ ★ ☆ ☆ ☆</h3>
+            <p>Terrible speed but easy to connect to.</p>
+          </div>
+        </div>
+
+
+        <div class="review-right">
+          <div class="font review">
+            <h3>Leave a review</h3>
+            <select>
+              <option value="1">1 Star</option>
+              <option value="2">2 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="5">5 Stars</option>
+            </select>
+            <textarea name="Comment" cols="40" rows="10"></textarea>
+            <input type="submit" value="Submit">
+          </div>
+        </div>
+
     </div>
   </div>
 

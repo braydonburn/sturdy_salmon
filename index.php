@@ -51,7 +51,7 @@
     <h1 id="mainPageTitle">Brisbane Connected</h1>
     <h3>Find free wifi in your area</h3>
     <div class="search">
-      <p><a class="homepageSubmit" href="searchPage.html">Search</a></p>
+      <p><a class="homepageSubmit" href="searchPage.php">Search</a></p>
     </div>
   </div>
   <!-- /Inner content -->

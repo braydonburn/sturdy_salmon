@@ -86,6 +86,8 @@
     <h1><?php print("$output"); ?></h1>
 
     <div class="font">
+      <h2>Address</h2>
+      <p><?php print("$address"); ?></p>
       <h2>Reviews</h2>
     </div>
     <div class="review">

@@ -30,10 +30,30 @@ function genHead() {
     echo '" href="searchPage.php">Search</a></li>
         <!-- NavLinks -->';
     if (isset($_SESSION['username'])) {
+      echo '<li><a href="logout.php">Logout</a></li>';
       echo '<li>The user currently logged in is: '.$_SESSION['username'].'</li>';
     } else {echo 'You are not currently logged in';}
     echo '</ul>
     </div>';
+}
+
+function showReviewBox() {
+  if (isset($_SESSION['username'])) {
+    echo '<div class="review-right">
+      <div class="font review">
+        <h3>Leave a review</h3>
+        <select>
+          <option value="1">1 Star</option>
+          <option value="2">2 Stars</option>
+          <option value="3">3 Stars</option>
+          <option value="4">4 Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+        <textarea name="Comment" cols="40" rows="10"></textarea>
+        <input type="submit" value="Submit">
+      </div>
+    </div>';
+  } else {echo '';}
 }
 
 # This sanitises data imputs to avoid cross scripting attacks

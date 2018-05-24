@@ -31,27 +31,6 @@ function getLocation() {
   }
 }
 
-// This function creates the Google map to show wifi locations
-//Pass php lat/long variables to js
-var latitude = "<?php echo $latitude; ?>";
-var longitude = "<?php echo $longitude; ?>";
-
-console.log(latitude);
-
-function myMap() {
-  var myCenter = new google.maps.LatLng(latitude, longitude);
-  var mapCanvas = document.getElementById("map");
-  var mapOptions = {
-    center: myCenter,
-    zoom: 18
-  };
-  var map = new google.maps.Map(mapCanvas, mapOptions);
-  var marker = new google.maps.Marker({
-    position: myCenter
-  });
-  marker.setMap(map);
-}
-
 // Login validation function
 // validates all relevant forms and returns true if are all correctly filled
 function validateLogin() {

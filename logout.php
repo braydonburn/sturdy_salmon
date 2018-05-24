@@ -4,6 +4,7 @@
 
 <?php
 session_start();
+echo "Bye!";
 session_destroy();
 ?>
 

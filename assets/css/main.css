@@ -367,6 +367,7 @@ Geolocation styling
   color: inherit;
   border: 0px;
   font-size: 17px;
+  display: inline-block;
 }
 
 #geoLocateDiv {

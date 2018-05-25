@@ -78,7 +78,7 @@
     <h3>Use your location to search</h3>
     <div id="geoLocateDiv" onclick="getLocation()">
       <span id="geoLocateIcon" class="fas fa-map-marker-alt"></span>
-      <button id="geoLocateButton">Click here for your coordinates</button>
+      <div id="geoLocateButton">Click here for your coordinates</div>
       <p id="status"></p>
     </div>
   </form>

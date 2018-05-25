@@ -35,25 +35,49 @@
   }
   $output = '';
 
-  $query = "SELECT *
-            FROM Items
-            WHERE hotspotName
-            LIKE '%$search%'
-            OR suburb
-            LIKE '%$search%'";
-  $result = mysqli_query($con, $query) or die(mysqli_error());
+  $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $count = mysqli_num_rows($result);
+  # This detects if the input lookd like a geolocation and then searches for
+  #wifi in the radius of that location
+  if(preg_match('/^[+-]?\d+\.\d+\s[+-]?\d+\.\d+$/',$search)) {
+    preg_match_all("/^[+-]?\d+\.\d+\s/", $search, $latitude, PREG_SET_ORDER);
+    preg_match_all("/[+-]?\d+\.\d+$/", $search, $longitude, PREG_SET_ORDER);
+    $latitude = floatval(implode($latitude[0]));
+    $longitude = floatval(implode($longitude[0]));
+    $radius = 0.02;
+    $latitudeHigh = $latitude+$radius;
+    $latitudeLow = $latitude-$radius;
+    $longitudeHigh = $longitude+$radius;
+    $longitudeLow = $longitude-$radius;
+    $query = $pdo->prepare("SELECT id, hotspotName, address, suburb, latitude,
+      longitude FROM Items WHERE (latitude BETWEEN :latitudeLow AND
+        :latitudeHigh) AND (longitude BETWEEN :longitudeLow AND
+          :longitudeHigh)");
+    $query->bindvalue(':latitudeHigh', $latitudeHigh);
+    $query->bindvalue(':latitudeLow', $latitudeLow);
+    $query->bindvalue(':longitudeHigh', $longitudeHigh);
+    $query->bindvalue(':longitudeLow', $longitudeLow);
+    $query->execute();
+  } else {
+    # This is a WIP for the search by name
+    $search = '%'.$_GET['search_input'].'%';
+    $query = $pdo->prepare("SELECT id, hotspotName, address, suburb FROM Items
+      WHERE hotspotName LIKE :search OR suburb LIKE :search");
+    $query->bindvalue(':search', $search);
+    $query->execute();
+  }
+  $count = $query->rowCount();
 
+  # This code runs if there are no results
   if ($count == 0) {
       $output = 'There were no search results, sorry.';
   } else {
-      while ($row = mysqli_fetch_array($result)) {
+      while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
           $id = $row['id'];
           $hotspotName = $row['hotspotName'];
           $address = $row['address'];
           $suburb = $row['suburb'];
-
           $output .= '<tr><td><a href="individualResults.php?id='.$id.'">'.$hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
       }
   }

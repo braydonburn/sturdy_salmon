@@ -29,13 +29,6 @@
   include('assets/php/functions.php');
   include('server.php');
   genHead();
-
-  if (isset($_GET['search_input'])) {
-      $_SESSION['search_input'] = $_GET['search_input'];
-  } else {
-    $_SESSION['search_input']="";
-  }
-
   ?>
   <!-- End Header template -->
 

@@ -27,7 +27,6 @@
   <!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  include('server.php');
   genHead();
   ?>
   <!-- End Header template -->
@@ -38,12 +37,30 @@
     <input type='search' name='search_input' id='addressSearch' placeholder='Enter address'>
     <input type='submit' value='Search'>
 
+    <!-- This PHP is used to generate the suburb list so that it changes if
+    suburbs are added or removed from the database  -->
+    <?php
+    $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+    $query= $pdo->prepare('SELECT DISTINCT suburb FROM Items ORDER BY
+      suburb ASC');
+    $query->execute();
+    $count = $query->rowCount();
+    $suburbSelection = '';
+    if ($count == 0) {
+        $suburbSelection = 'There is a database error.';
+    } else {
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+          preg_match_all('/^[A-Za-z\s]*/', $row['suburb'],
+          $suburbs, PREG_SET_ORDER);
+          $suburbs = implode($suburbs[0]);
+          $suburbSelection .= '<option value='.$suburbs.'>'.$suburbs.'</option>';
+        }
+    }
+    ?>
     <h3>Suburb Selection</h3>
     <select name='suburbSelection'>
-        <option value=''>All suburbs</option>
-        <option value='Chermside'>Chermside</option>
-        <option value='Annerley'>Annerley</option>
-        <option value='Ashgrove'>Ashgrove</option>
+      <option value=''>All suburbs</option>
+      <?php print("$suburbSelection"); ?>
     </select>
 
     <!-- Checkbox to search by rating -->

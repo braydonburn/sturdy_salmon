@@ -35,6 +35,9 @@
   }
   $output = '';
 
+  $suburb = '%'.$_GET['suburbSelection'].'%';
+  $rating = intval($_GET['minimumRating']);
+
   $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -54,6 +57,20 @@
       longitude FROM Items WHERE (latitude BETWEEN :latitudeLow AND
         :latitudeHigh) AND (longitude BETWEEN :longitudeLow AND
           :longitudeHigh)');
+
+    if ($rating===0) {
+      $query = $pdo->prepare('SELECT id, hotspotName, address, suburb, latitude,
+        longitude FROM Items WHERE (latitude BETWEEN :latitudeLow AND
+          :latitudeHigh) AND (longitude BETWEEN :longitudeLow AND
+            :longitudeHigh)');
+    } else {
+      $query = $pdo->prepare('SELECT id, hotspotName, address, suburb, latitude,
+        longitude FROM Items WHERE (latitude BETWEEN :latitudeLow AND
+          :latitudeHigh) AND (longitude BETWEEN :longitudeLow AND
+            :longitudeHigh) AND (id IN (SELECT hotspotID FROM Reviews
+          GROUP BY hotspotID HAVING AVG(rating)>=:rating))');
+      $query->bindvalue(':rating', $rating);
+    }
     $query->bindvalue(':latitudeHigh', $latitudeHigh);
     $query->bindvalue(':latitudeLow', $latitudeLow);
     $query->bindvalue(':longitudeHigh', $longitudeHigh);
@@ -62,10 +79,17 @@
   } else {
     # This is a WIP for the search by name
     $search = '%'.$_GET['search_input'].'%';
-    $suburb = '%'.$_GET['suburbSelection'].'%';
-    $query = $pdo->prepare('SELECT id, hotspotName, address, suburb FROM Items
-      WHERE (hotspotName LIKE :search OR suburb LIKE :search) AND
-      (suburb LIKE :suburb)');
+    if ($rating===0) {
+      $query = $pdo->prepare('SELECT id, hotspotName, address, suburb FROM Items
+        WHERE (hotspotName LIKE :search OR suburb LIKE :search) AND
+        (suburb LIKE :suburb)');
+    } else {
+      $query = $pdo->prepare('SELECT id, hotspotName, address, suburb FROM Items
+        WHERE (hotspotName LIKE :search OR suburb LIKE :search) AND
+        (suburb LIKE :suburb) AND (id IN (SELECT hotspotID FROM Reviews
+          GROUP BY hotspotID HAVING AVG(rating)>=:rating))');
+      $query->bindvalue(':rating', $rating);
+    }
     $query->bindvalue(':search', $search);
     $query->bindvalue(':suburb', $suburb);
     $query->execute();

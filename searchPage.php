@@ -47,32 +47,15 @@
     </select>
 
     <!-- Checkbox to search by rating -->
-    <h3>Rating Search</h3>
-    <div>
-      <input id='5stars' name='5' type='checkbox' checked>
-      <label for='5stars'>5 stars</label>
-      <br>
-
-      <input id='4stars' name='4' type='checkbox' checked>
-      <label for='4stars'>4 stars</label>
-      <br>
-
-      <input id='3stars' name='3' type='checkbox' checked>
-      <label for='3stars'>3 stars</label>
-      <br>
-
-      <input id='2stars' name='2' type='checkbox' checked>
-      <label for='2stars'>2 stars</label>
-      <br>
-
-      <input id='1stars' name='1' type='checkbox' checked>
-      <label for='1stars'>1 stars</label>
-      <br>
-
-      <input id='0stars' name='0' type='checkbox' checked>
-      <label for='0stars'>0 stars</label>
-      <br>
-    </div>
+    <h3>Minimum Rating Search</h3>
+    <select name='minimumRating'>
+        <option value='0'>Any Rating</option>
+        <option value='5'>Minimum 5 stars</option>
+        <option value='4'>Minimum 4 stars</option>
+        <option value='3'>Minimum 3 stars</option>
+        <option value='2'>Minimum 2 stars</option>
+        <option value='1'>Minimum 1 stars</option>
+    </select>
 
     <!-- Geolocation div to grab current users location -->
     <h3>Use your location to search</h3>

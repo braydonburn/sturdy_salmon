@@ -35,7 +35,6 @@
   $output = '';
 
   $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   $query = $pdo->prepare('SELECT * FROM Items WHERE id = :id');
   $query->bindvalue(':id',$id);
@@ -91,23 +90,35 @@
             <p><?php print("$address"); ?></p>
             <h2>Reviews</h2>
           </div>
+          <?php
+          $query = $pdo->prepare('SELECT username, date, comment, rating
+            FROM Reviews WHERE hotspotID = :hotspotID');
+          $query->bindvalue(':hotspotID', $id);
+          $query->execute();
+          $count = $query->rowCount();
 
-          <div class='review'>
-            <h3>David: ★ ★ ★ ★ ☆</h3>
-            <p>Easy to connect to and decent speed.</p>
-          </div>
-          <div class='review'>
-            <h3>Lauren: ★ ★ ★ ☆ ☆</h3>
-            <p>Speed could be better.</p>
-          </div>
-          <div class='review'>
-            <h3>Jason: ★ ★ ★ ★ ★</h3>
-            <p>Easy connection and fast speed.</p>
-          </div>
-          <div class='review'>
-            <h3>Libby: ★ ★ ☆ ☆ ☆</h3>
-            <p>Terrible speed but easy to connect to.</p>
-          </div>
+          if ($count == 0) {
+            echo '<h2>There are no reviews for this wifi yet</h2>';
+          } else {
+            $reviewContents = '';
+              while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                  $username = $row['username'];
+                  $rating = $row['rating'];
+                  $ratingStar = '';
+                  for ($x = 0; $x<$rating; $x++) {
+                    $ratingStar .= '★ ';
+                  }
+                  for ($y=0; $y<=(4-$rating); $y++) {
+                    $ratingStar .= '☆ ';
+                  }
+                  $comment = $row['comment'];
+                  $date = $row['date'];
+                  $reviewContents .= '<div class=\'review\'><h3>'.$username.': '
+                  .$ratingStar.'</h3>'.'<p>'.$comment.'</p><p>'.$date.'</p></div>';
+              }
+              print("$reviewContents");
+          }
+           ?>
         </div>
 
       <form method='post' action='reviewPost.php'>

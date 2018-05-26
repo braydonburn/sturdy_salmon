@@ -20,5 +20,8 @@ CREATE TABLE IF NOT EXISTS `Items` (
  `hotspotID` int(10) NOT NULL,
  `username` varchar(50) NOT NULL,
  `date` date NOT NULL,
- `comment` VARCHAR(255) NOT NULL
+ `comment` VARCHAR(255) NOT NULL,
+ `rating` TINYINT(1) NOT NULL,
+ FOREIGN KEY (hotspotID) REFERENCES Items(id),
+ FOREIGN KEY (username) REFERENCES Members(username)
  );

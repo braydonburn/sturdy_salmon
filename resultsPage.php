@@ -39,7 +39,6 @@
   $rating = intval($_GET['minimumRating']);
 
   $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   # This detects if the input lookd like a geolocation and then searches for
   #wifi in the radius of that location
@@ -99,13 +98,15 @@
   # This code runs if there are no results
   if ($count == 0) {
       $output = 'There were no search results, sorry.';
+  # This shows the results
   } else {
       while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
           $id = $row['id'];
           $hotspotName = $row['hotspotName'];
           $address = $row['address'];
           $suburb = $row['suburb'];
-          $output .= '<tr><td><a href=\'individualResults.php?id='.$id.'\'>'.$hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
+          $output .= '<tr><td><a href=\'individualResults.php?id='.$id.'\'>'.
+          $hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
       }
   }
   ?>

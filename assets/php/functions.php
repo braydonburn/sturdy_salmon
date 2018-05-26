@@ -39,20 +39,21 @@ function genHead() {
 
 function showReviewBox() {
   if (isset($_SESSION['username'])) {
-    echo '<div class="review-right">
-      <div class="font review">
+    echo "<div class='review-right'>
+      <div class='font review'>
         <h3>Leave a review</h3>
-        <select>
-          <option value="1">1 Star</option>
-          <option value="2">2 Stars</option>
-          <option value="3">3 Stars</option>
-          <option value="4">4 Stars</option>
-          <option value="5">5 Stars</option>
+        <select name='rating'>
+          <option value='1'>1 Star</option>
+          <option value='2'>2 Stars</option>
+          <option value='3'>3 Stars</option>
+          <option value='4'>4 Stars</option>
+          <option value='5'>5 Stars</option>
         </select>
-        <textarea name="Comment" cols="40" rows="10"></textarea>
-        <input type="submit" value="Submit">
+        <input name='id' type='hidden' value=".$_GET['id']."/>
+        <textarea name='comment' cols='40' rows='10'></textarea>
+        <input type='submit' value='Submit'>
       </div>
-    </div>';
+    </div>";
   } else {echo '';}
 }
 

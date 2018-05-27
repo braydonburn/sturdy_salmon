@@ -35,9 +35,6 @@ require('assets/php/validation.php');
             $query->bindvalue(':rating', $rating);
             $query->execute();
             header('location: individualResults.php?id='.$hotspotID);
-            echo $query->rowCount();
-            echo "\nPDO::errorInfo():\n";
-            print_r($query->errorInfo());
           }
       } else {
         header('location: searchPage.php');

@@ -36,7 +36,7 @@
   $output = '';
 
   # This querys the database for the location details relating to the hotspot
-  $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+  require('assets/php/pdoConnection.php');
   $query = $pdo->prepare('SELECT * FROM Items WHERE id = :id');
   $query->bindvalue(':id',$id);
   $query->execute();

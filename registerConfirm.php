@@ -54,7 +54,7 @@
             #This function should be enough to store the password safely
             $password = password_Hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+            require('assets/php/pdoConnection.php');
             $query = $pdo->prepare('INSERT into `Members` (fullname, username, email, password, birthday) VALUES (:fullname, :username, :email, :password, :date)');
             $query->bindvalue(':fullname', $fullname);
             $query->bindvalue(':username', $username);

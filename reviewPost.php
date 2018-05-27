@@ -20,8 +20,7 @@ require('assets/php/validation.php');
           if (count($errors)>0) {
             header('location: individualResults.php?id='.$hotspotID);
           } else {
-            $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1',
-            'password');
+            require('assets/php/pdoConnection.php');
             $query = $pdo->prepare('INSERT INTO Reviews (hotspotID, username,
               date, comment, rating) VALUES (:hotspotID, :username, :date,
                 :comment, :rating)');

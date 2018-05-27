@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -38,7 +39,7 @@
   $suburb = '%'.$_GET['suburbSelection'].'%';
   $rating = intval($_GET['minimumRating']);
 
-  $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+  require('assets/php/pdoConnection.php');
 
   # This detects if the input lookd like a geolocation and then searches for
   #wifi in the radius of that location

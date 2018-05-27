@@ -40,7 +40,7 @@
     <!-- This PHP is used to generate the suburb list so that it changes if
     suburbs are added or removed from the database  -->
     <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+    require('assets/php/pdoConnection.php');
     $query= $pdo->prepare('SELECT DISTINCT suburb FROM Items ORDER BY
       suburb ASC');
     $query->execute();

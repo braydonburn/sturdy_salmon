@@ -35,7 +35,7 @@
       #global $username;
       $password = ($_POST['password']);
       //Checking is user exists in the database or not
-      $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
+      require('assets/php/pdoConnection.php');
       $query = $pdo->prepare("SELECT username, password FROM `Members` WHERE username=:username");
       $query->bindvalue(':username', $username);
       $query->execute();

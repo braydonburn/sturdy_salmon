@@ -1,11 +1,21 @@
 <?php
+    # This establishes an array that will be used to keep the errors that are in
+    #the user's inputs and will then be reported back to them
     $errors = array();
+
+    # This will validate the form and display errors, only if the user has
+    #submitted anything, this is to stop errors appearing on loading the page
     if (!empty($_POST)) {
+
+        # This validates the form to ensure only valid inputs are entered
         require 'assets/php/validation.php';
-        formValidate($errors, $_POST['email'], $_POST['day'],$_POST['month'], $_POST['year'], $_POST['fullName'], $_POST['username'], $_POST['password'], $_POST['confirmPassword']);
+        formValidate($errors, $_POST['email'], $_POST['day'],$_POST['month'],
+        $_POST['year'], $_POST['fullName'], $_POST['username'],
+        $_POST['password'], $_POST['confirmPassword']);
+
+        # If there are no errors then the user's data will be put into the
+        #database, otherwise the form will be shown again.
         if (count($errors)>0) {
-            echo "<h3>Error1.</h3>";
-            echo var_dump($errors);
             include 'registrationPage.php';
         } else {
             # This gets all of the needed values from the post
@@ -14,11 +24,16 @@
             $username = $_POST['username'];
             $email = $_POST['email'];
             $date = $_POST['year'].'-'.$monthNumber.'-'.$_POST['day'];
-            #This function should be enough to store the password safely
-            $password = password_Hash($_POST['password'], PASSWORD_DEFAULT);
 
+            # This function stores the password as a hash, with the salt as part
+            #of the hash.
+            $password = password_Hash($_POST['password'], PASSWORD_DEFAULT);
             require('assets/php/pdoConnection.php');
-            $query = $pdo->prepare('INSERT into `Members` (fullname, username, email, password, birthday) VALUES (:fullname, :username, :email, :password, :date)');
+
+            # This will insert the users values into the database
+            $query = $pdo->prepare('INSERT into `Members` (fullname, username,
+              email, password, birthday) VALUES (:fullname, :username, :email,
+                :password, :date)');
             $query->bindvalue(':fullname', $fullname);
             $query->bindvalue(':username', $username);
             $query->bindvalue(':email', $email);
@@ -38,6 +53,6 @@
             }
         }
     } else {
-        echo "<h3>Error2.</h3>";
         include 'registrationPage.php';
     }
+?>

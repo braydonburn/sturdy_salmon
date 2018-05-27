@@ -5,7 +5,8 @@ function sanitise($userPost) {
 }
 
 # This function will run all of the other validation functions
-function formValidate(&$errors, $postEmail, $postDay, $postMonth, $postYear, $postFullName, $postUsername, $postPassword, $postConfirmPassword) {
+function formValidate(&$errors, $postEmail, $postDay, $postMonth, $postYear,
+$postFullName, $postUsername, $postPassword, $postConfirmPassword) {
   validateEmail($errors, sanitise($postEmail));
   dateValidate($errors, sanitise($postDay), sanitise($postMonth), sanitise($postYear));
   fullNameValidate($errors, sanitise($postFullName));
@@ -28,7 +29,7 @@ function validateEmail(&$errors, $emailValue) {
 #then it checks if the month is one which is in the month list, and then it
 #checks if the year is not in the future and is greater than 1900.
 function dateValidate(&$errors, $day, $month, $year) {
-  $monthList = ['January','February','March','April','May','June','August','September','October','November','December'];
+  $monthList = ['1','2','3','4','5','6','7','8','9','10','11','12'];
   if ((!isset($day) || empty($day)) || (!isset($month) || empty($month)) ||
   (!isset($year) || empty($year))) {
     $errors['dateMissing'] = 'Please fill all date fields';

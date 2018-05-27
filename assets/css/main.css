@@ -204,7 +204,6 @@ table, th, td {
 
 .error-message {
   color: red;
-  visibility: hidden;
 }
 
 /*End Classes used globaly throughout site*/

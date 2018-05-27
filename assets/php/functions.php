@@ -98,11 +98,13 @@ function dropdownList(){
   if (!isset($value)) {
     echo '<option value="-1" disabled hidden>Select Month</option>';
   }
+  $count=0;
   foreach ($monthList as $monthName) {
+    $count+=1;
     if ($monthName === $value) {
-      echo '<option value="'.$monthName.'" selected>'.$monthName.'</option>';
+      echo '<option value="'.$count.'" selected>'.$monthName.'</option>';
     } else {
-      echo '<option value="'.$monthName.'">'.$monthName.'</option>';
+      echo '<option value="'.$count.'">'.$monthName.'</option>';
     }
   }
   echo '</select>';

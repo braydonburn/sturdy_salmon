@@ -4,8 +4,8 @@
 
 <?php
 session_start();
-echo "Bye!";
 session_destroy();
+header('location: index.php');
 ?>
 
 </body>

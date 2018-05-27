@@ -419,6 +419,7 @@ End Geolocation code
 .spinnerText {
   text-align: center;
   color: white;
+  padding-top: 20%;
 }
 
 .spinner {

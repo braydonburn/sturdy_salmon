@@ -107,4 +107,11 @@ function dropdownList(){
   }
   echo '</select>';
 }
+
+# This function generates the footer that appears on every page
+function genFooter() {
+  echo '<footer class="footer font">
+      <a>© 2018 Braydon Burn & Bertrand Dungan</a>
+    </footer>';
+}
 ?>

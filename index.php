@@ -38,8 +38,6 @@
   ?>
   <!-- End Header template -->
 
-  <!-- End Header template -->
-
   <!-- Background Video -->
   <video autoplay muted loop id="myVideo">
 	  <source src="assets/BrisbaneCBD.mp4" type="video/mp4">
@@ -57,9 +55,9 @@
   <!-- /Inner content -->
 
   <!-- Footer template -->
-  <footer class="footer font">
-    <a>© 2018 Braydon Burn & Bertrand Dungan</a>
-  </footer>
+  <?php
+    genFooter();
+   ?>
   <!-- End Footer template -->
 
 </body>

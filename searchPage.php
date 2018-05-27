@@ -84,9 +84,9 @@
   </form>
 
   <!-- Footer template -->
-  <footer class='footer font'>
-    <a>© 2018 Braydon Burn & Bertrand Dungan</a>
-  </footer>
+  <?php
+    genFooter();
+   ?>
   <!-- End Footer template -->
 </body>
 

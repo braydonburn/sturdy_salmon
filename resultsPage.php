@@ -117,23 +117,21 @@
   						echo "var markersJSON = $PHPtoJSON;";
   					} catch (Exception $e) {} ?>
   					var bounds = new google.maps.LatLngBounds();
-  					var parksMap = new google.maps.Map(document.getElementById('map'), {
+  					var wifiMap = new google.maps.Map(document.getElementById('map'), {
   						zoom: 1
   					});
   					// Add markers from data
   					for (var i = 0; i < markersJSON.length; i++) {
-  					 var star = "&#9733;".repeat(parseInt(markersJSON[i]["Rating"])) + "&#9734;".repeat(parseInt(5 - markersJSON[i]["Rating"]))
-  						var parkInfo = new google.maps.InfoWindow({
-  							content: "<a href='park.php?id=" + markersJSON[i]["id"] + "'><p class='park-name'>" + markersJSON[i]["Name"] + "</p></a>" +
-  							"<p class='location'>" + markersJSON[i]["Suburb"] + "</p>" +
-  							"<p class='rating'>" + star + "</p>" +
+  						var wifiInfo = new google.maps.InfoWindow({
+  							content: "<a href='individualResults.php?id=" + markersJSON[i]["id"] + "'><p>" + markersJSON[i]["hotspotName"] + "</p></a>" +
+  							"<p class='location'>" + markersJSON[i]["Address"] + "</p>" +
   							"</div>"
   						});
   						var markerObject = new google.maps.Marker({
   							position: new google.maps.LatLng(parseFloat(markersJSON[i]["Latitude"]), parseFloat(markersJSON[i]["Longitude"])),
-  							map: parksMap,
+  							map: wifiMap,
   							title: markersJSON[i]["Name"],
-  							infowindow: parkInfo
+  							infowindow: wifiInfo
   						});
   						// Add click listener to display info window
   						google.maps.event.addListener(markerObject, 'click', function() {
@@ -141,7 +139,7 @@
   						});
   						bounds.extend(markerObject.position);
   					}
-  					parksMap.fitBounds(bounds);
+  					wifiMap.fitBounds(bounds);
   				}
   				</script>
 

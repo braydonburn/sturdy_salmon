@@ -26,6 +26,7 @@
   <!-- Header template -->
   <?php
   include('assets/php/functions.php');
+  require('assets/php/validation.php');
   genHead();
 
   if (isset($_GET['id'])) {
@@ -34,16 +35,19 @@
 
   $output = '';
 
+  # This querys the database for the location details relating to the hotspot
   $pdo = new PDO('mysql:host=localhost;dbname=cab230', 'root1', 'password');
-
   $query = $pdo->prepare('SELECT * FROM Items WHERE id = :id');
   $query->bindvalue(':id',$id);
   $query->execute();
   $count = $query->rowCount();
 
+  # If there is no result for that id, either due to a databse error or the user
+  #entering an id that does not exist, the page will redirect back to the search
   if ($count == 0) {
-      $output = 'There was an error finding the result you searched for, sorry.';
+    header('location: searchPage.php');
   } else {
+    # This gets the location data from the database to then pass onto the JS map
       while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
           $hotspotName = $row['hotspotName'];
           $address = $row['address'];
@@ -90,19 +94,23 @@
             <p><?php print("$address"); ?></p>
             <h2>Reviews</h2>
           </div>
+
           <?php
+          # This shows the reviews that other people have posted with their
+          #username, comment, star rating, and the date of their review
           $query = $pdo->prepare('SELECT username, date, comment, rating
             FROM Reviews WHERE hotspotID = :hotspotID');
           $query->bindvalue(':hotspotID', $id);
           $query->execute();
           $count = $query->rowCount();
 
+          # This checks if there are any reviews yet
           if ($count == 0) {
             echo '<h2>There are no reviews for this wifi yet</h2>';
           } else {
             $reviewContents = '';
               while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-                  $username = $row['username'];
+                  $username = sanitise($row['username']);
                   $rating = $row['rating'];
                   $ratingStar = '';
                   for ($x = 0; $x<$rating; $x++) {
@@ -111,16 +119,19 @@
                   for ($y=0; $y<=(4-$rating); $y++) {
                     $ratingStar .= '☆ ';
                   }
-                  $comment = $row['comment'];
+                  $comment = sanitise($row['comment']);
                   $date = $row['date'];
                   $reviewContents .= '<div class=\'review\'><h3>'.$username.': '
-                  .$ratingStar.'</h3>'.'<p>'.$comment.'</p><p>'.$date.'</p></div>';
+                  .$ratingStar.'</h3>'.'<p>'.$comment.'</p><p>'.
+                  $date.'</p></div>';
               }
               print("$reviewContents");
           }
            ?>
         </div>
 
+        <!-- This shows an box where users can add reviews, but it is only
+        visible if the user is logged in -->
       <form method='post' action='reviewPost.php'>
         <?php showReviewBox() ?>
       </form>
@@ -136,6 +147,4 @@
 
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=myMap'></script>
 </body>
-
-
 </html>

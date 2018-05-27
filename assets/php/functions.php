@@ -31,12 +31,17 @@ function genHead() {
         <!-- NavLinks -->';
     if (isset($_SESSION['username'])) {
       echo '<li><a href="logout.php">Logout</a></li>';
-      echo '<li>The user currently logged in is: '.$_SESSION['username'].'</li>';
+
+      echo '<li>The user currently logged in is: '.
+      filter_var(stripslashes($_SESSION['username']),
+      FILTER_SANITIZE_FULL_SPECIAL_CHARS).'</li>';
     } else {echo 'You are not currently logged in';}
     echo '</ul>
     </div>';
 }
 
+# This function generates the box where users can leave reviews if they are
+#logged in
 function showReviewBox() {
   if (isset($_SESSION['username'])) {
     echo "<div class='review-right'>
@@ -84,7 +89,7 @@ $errors, $maxLength, $pattern) {
   }
 }
 
-# This function creates the dropdown list and echoes the last set value
+# This function creates the dropdown list for months echoes the last set value
 function dropdownList(){
   $value = getFormValue('month');
   $monthList = array('January', 'February', 'March', 'April',

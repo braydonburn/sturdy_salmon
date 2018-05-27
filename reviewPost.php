@@ -9,7 +9,11 @@ require('assets/php/validation.php');
       #through the review form
       if (!empty($_POST)) {
         date_default_timezone_set('Australia/Brisbane');
-        $hotspotID = $_POST['id'];
+        $hotspotPost = ($_POST['id']);
+
+        # For some reason ONLY on the QUT server is there a random slash added
+        #to the end of the ID post, this slash is removed
+        $hotspotID = str_replace('/','',$hotspotPost);
         $username = ($_SESSION['username']);
         $date = date('Y-m-d');
         $comment = sanitise($_POST['comment']);
@@ -31,6 +35,9 @@ require('assets/php/validation.php');
             $query->bindvalue(':rating', $rating);
             $query->execute();
             header('location: individualResults.php?id='.$hotspotID);
+            echo $query->rowCount();
+            echo "\nPDO::errorInfo():\n";
+            print_r($query->errorInfo());
           }
       } else {
         header('location: searchPage.php');

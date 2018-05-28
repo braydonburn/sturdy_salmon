@@ -156,9 +156,15 @@ li a:hover:not(.active) {
 }
 
 .table {
-  padding-top: 5%;
+  padding-top: 2%;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .table {
+      font-size: 11px;
+  }
 }
 
 .table th {
@@ -184,6 +190,12 @@ table, th, td {
   padding-top: 5%;
   padding-right: 5%;
   padding-bottom: 5%;
+}
+
+.resultPageMap {
+  padding-left: 5%;
+  padding-top: 3%;
+  padding-right: 5%;
 }
 
 .grid-container {

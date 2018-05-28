@@ -84,17 +84,12 @@
   }
   $count = $query->rowCount();
 
-  $resultsArray = $query->fetch(PDO::FETCH_ASSOC);
-  #echo var_dump($resultsArray);
-  $PHPtoJSON = json_encode($resultsArray);
-  var_dump($PHPtoJSON);
-
   # This code runs if there are no results
   if ($count == 0) {
       $output = 'There were no search results, sorry.';
   # This shows the results
   } else {
-      while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+      foreach ($query as $row){
           $id = $row['id'];
           $hotspotName = $row['hotspotName'];
           $address = $row['address'];
@@ -105,7 +100,6 @@
           $hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
       }
   }
-
   ?>
   <!-- End Header template -->
 

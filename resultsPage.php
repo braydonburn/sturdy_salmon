@@ -89,6 +89,7 @@
       $output = 'There were no search results, sorry.';
   # This shows the results
   } else {
+      $mapArray = [];
       foreach ($query as $row){
           $id = $row['id'];
           $hotspotName = $row['hotspotName'];
@@ -98,49 +99,67 @@
           $longitude = $row['latitude'];
           $output .= '<tr><td><a href=\'individualResults.php?id='.$id.'\'>'.
           $hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
+          $arrayContents = [$hotspotName, $latitude, $longitude];
+          array_push($mapArray, $arrayContents);
       }
   }
   ?>
   <!-- End Header template -->
-
   <!-- Map -->
-  			<div id="map">
   				<!-- Script to intialise map and markers -->
-  				<script>
-  				/* Function for adding markers using search parameters */
-  				function initMap() {
-  					var bounds = new google.maps.LatLngBounds();
-  					var wifiMap = new google.maps.Map(document.getElementById('map'), {
-  						zoom: 1
-  					});
-              for (var i = 0; i < <?php echo($count); ?>; i++) {
-                var wifiInfo = new google.maps.InfoWindow({
-                  content: "<a href='individualResults.php?id=" +
-                  <?php echo '"'.$id.'"';?> + "'><p>" + <?php echo '"'.$hotspotName.'"';?> +
-                   "</p></a>" + "<p class='location'>" + <?php echo '"'.$address.'"';?>
-                    + "</p></div>"
-                });
-  						var markerObject = new google.maps.Marker({
-  							position: new google.maps.LatLng(parseFloat(<?php echo $latitude;?>), parseFloat(<?php echo $longitude;?>)),
-  							map: wifiMap,
-  							title:<?php echo '"'.$hotspotName.'"';?>,
-  							infowindow: wifiInfo
-  						});
-  						// Add click listener to display info window
-  						google.maps.event.addListener(markerObject, 'click', function() {
-  								this.infowindow.open(map, this);
-  						});
-  						bounds.extend(markerObject.position);
-  					}
-  					wifiMap.fitBounds(bounds);
-  				}
-  				</script>
+          <script type='text/javascript'>
+          function initMap() {
+              var locations = <?php echo json_encode($mapArray); ?>;
+
+              window.map = new google.maps.Map(document.getElementById('map'), {
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              });
+
+              var infowindow = new google.maps.InfoWindow();
+
+              var bounds = new google.maps.LatLngBounds();
+
+              for (i = 0; i < locations.length; i++) {
+                  marker = new google.maps.Marker({
+                      position: new google.maps.LatLng(locations[i][2], locations[i][1]),
+                      map: map
+                  });
+
+                  bounds.extend(marker.position);
+
+                  google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                      return function () {
+                          infowindow.setContent(locations[i][0]);
+                          infowindow.open(map, marker);
+                      }
+                  })(marker, i));
+              }
+              map.fitBounds(bounds);
+
+              var listener = google.maps.event.addListener(map, "idle", function () {
+                  map.setZoom(11);
+                  google.maps.event.removeListener(listener);
+              });
+          }
+
+          function loadScript() {
+              var script = document.createElement('script');
+              script.type = 'text/javascript';
+              script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';
+              document.body.appendChild(script);
+          }
+
+          window.onload = loadScript;
+          </script>
+          <script>
+          async defer
+          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';
+          </script>
+
+
+          <div id="map"></div>
 
   				<!-- Google Maps API script -->
-  				<script async defer
-  				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap&sensor=false">
-  				</script>
-  			</div>
 
   <!-- Using a center-aligned table to produce the sample results page. -->
   <div class='table form font'>
@@ -157,10 +176,6 @@
         <?php print("$output"); ?>
       </tbody>
     </table>
-  </div>
-
-  <div id="map">
-
   </div>
   <!-- Footer template -->
   <?php

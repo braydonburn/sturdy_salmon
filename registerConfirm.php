@@ -40,9 +40,10 @@
             $query->bindvalue(':password', $password);
             $query->bindvalue(':date', $date);
             $query->execute();
-            #This code is currently just for error checking, I'll update it
-            #later so that it only shows errors users need, like having the same
-            #username as someone else and needing to choose a different one
+
+            # This checks whether users need to choose a differnt username
+            #either because it is already in use or there was an error in adding
+            #it to the database. If there are no errors the user will register
             if (($query->rowCount())>0) {
               include 'loginPage.php';
               echo "<h1>You are successfully registered</h1>";

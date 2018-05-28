@@ -136,6 +136,18 @@ function genMeta() {
     <link rel='mask-icon' href='assets/favicon/safari-pinned-tab.svg' color='#5bbad5'>
     <link rel='apple-touch-icon' href='assets/favicon/apple-touch-icon.png'>
     <meta name='msapplication-TileColor' content='#da532c'>
-    <meta name='theme-color' content='#ffffff'>";
-}
+    <meta name='theme-color' content='#ffffff'>
+    <!-- OpenGraph -->
+    <meta property='og:title' content='Brisbane Free Wifi Finder'/>
+    <meta property='og:site_name' content='Brisbane Connected'/>
+    <meta property='og:type' content='website'/>
+    <meta property='og:url' content='http://cab230.sef.qut.edu.au/Students/n9942874/'/>
+    <meta property='og:image'  content='assets/favicon/android-chrome-192x192.png'/>
+    <meta property='og:description' content='Find free wifi in Brisbane.'/>
+    <!-- Twitter Cards -->
+    <meta name='twitter:card' content='summary'/>
+    <meta name='twitter:title' content='Brisbane Connected'/>
+    <meta name='twitter:description' content='Find free wifi in Brisbane.'/>
+    <meta name='twitter:image:src' content='assets/favicon/android-chrome-192x192.png'/>
+";}
 ?>

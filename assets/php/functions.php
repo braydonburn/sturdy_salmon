@@ -12,10 +12,10 @@ function genHead() {
   }
   echo '" href="index.php">Home</a></li>
         <li><a class="';
-  if (basename($_SERVER['PHP_SELF']) === "registrationPage.php") {
+  if (basename($_SERVER['PHP_SELF']) === "registerConfirm.php") {
     echo 'active';
   }
-  echo '" href="registrationPage.php">Register</a></li>
+  echo '" href="registerConfirm.php">Register</a></li>
         <li><a class="';
   if (basename($_SERVER['PHP_SELF']) === "loginPage.php") {
     echo 'active';

@@ -84,9 +84,10 @@
   }
   $count = $query->rowCount();
 
-  // Trying to bind all query results to an array then pass them to a json encode
   $resultsArray = $query->fetch(PDO::FETCH_ASSOC);
+  #echo var_dump($resultsArray);
   $PHPtoJSON = json_encode($resultsArray);
+  var_dump($PHPtoJSON);
 
   # This code runs if there are no results
   if ($count == 0) {
@@ -109,49 +110,43 @@
   <!-- End Header template -->
 
   <!-- Map -->
-  <div class="resultPageMap font">
-    <div id="map">
-      <!-- Script to intialise map and markers -->
-      <script>
-      /* Function for adding markers using search parameters */
-      function initMap() {
-        <?php try {
-          echo "var markersJSON = $PHPtoJSON;";
-        } catch (Exception $e) {} ?>
-        var bounds = new google.maps.LatLngBounds();
-        var wifiMap = new google.maps.Map(document.getElementById('map'), {
-          zoom: 1
-        });
-        // Add markers from data
-        for (var i = 0; i < markersJSON.length; i++) {
-          var wifiInfo = new google.maps.InfoWindow({
-            content: "<a href='individualResults.php?id=" + markersJSON[i]["id"] + "'><p>" + markersJSON[i]["hotspotName"] + "</p></a>" +
-            "<p class='location'>" + markersJSON[i]["Address"] + "</p>" +
-            "</div>"
-          });
-          var markerObject = new google.maps.Marker({
-            position: new google.maps.LatLng(parseFloat(markersJSON[i]["Latitude"]), parseFloat(markersJSON[i]["Longitude"])),
-            map: wifiMap,
-            title: markersJSON[i]["Name"],
-            infowindow: wifiInfo
-          });
-          // Add click listener to display info window
-          google.maps.event.addListener(markerObject, 'click', function() {
-              this.infowindow.open(map, this);
-          });
-          bounds.extend(markerObject.position);
-        }
-        wifiMap.fitBounds(bounds);
-      }
-      </script>
+  			<div id="map">
+  				<!-- Script to intialise map and markers -->
+  				<script>
+  				/* Function for adding markers using search parameters */
+  				function initMap() {
+  					var bounds = new google.maps.LatLngBounds();
+  					var wifiMap = new google.maps.Map(document.getElementById('map'), {
+  						zoom: 1
+  					});
+              for (var i = 0; i < <?php echo($count); ?>; i++) {
+                var wifiInfo = new google.maps.InfoWindow({
+                  content: "<a href='individualResults.php?id=" +
+                  <?php echo '"'.$id.'"';?> + "'><p>" + <?php echo '"'.$hotspotName.'"';?> +
+                   "</p></a>" + "<p class='location'>" + <?php echo '"'.$address.'"';?>
+                    + "</p></div>"
+                });
+  						var markerObject = new google.maps.Marker({
+  							position: new google.maps.LatLng(parseFloat(<?php echo $latitude;?>), parseFloat(<?php echo $longitude;?>)),
+  							map: wifiMap,
+  							title:<?php echo '"'.$hotspotName.'"';?>,
+  							infowindow: wifiInfo
+  						});
+  						// Add click listener to display info window
+  						google.maps.event.addListener(markerObject, 'click', function() {
+  								this.infowindow.open(map, this);
+  						});
+  						bounds.extend(markerObject.position);
+  					}
+  					wifiMap.fitBounds(bounds);
+  				}
+  				</script>
 
-      <!-- Google Maps API script -->
-      <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap&sensor=false">
-      </script>
-    </div>
-
-  </div>
+  				<!-- Google Maps API script -->
+  				<script async defer
+  				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap&sensor=false">
+  				</script>
+  			</div>
 
   <!-- Using a center-aligned table to produce the sample results page. -->
   <div class='table form font'>

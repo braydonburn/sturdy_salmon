@@ -99,7 +99,7 @@
           $longitude = $row['latitude'];
           $output .= '<tr><td><a href=\'individualResults.php?id='.$id.'\'>'.
           $hotspotName.'</a></td><td>'.$address.'</td><td>'.$suburb.'</tr>';
-          $arrayContents = [$hotspotName, $latitude, $longitude];
+          $arrayContents = [$hotspotName, $latitude, $longitude, $address, $suburb, $id];
           array_push($mapArray, $arrayContents);
       }
   }
@@ -112,7 +112,6 @@
               var locations = <?php echo json_encode($mapArray); ?>;
 
               window.map = new google.maps.Map(document.getElementById('map'), {
-                  mapTypeId: google.maps.MapTypeId.ROADMAP
               });
 
               var infowindow = new google.maps.InfoWindow();
@@ -129,7 +128,9 @@
 
                   google.maps.event.addListener(marker, 'click', (function (marker, i) {
                       return function () {
-                          infowindow.setContent(locations[i][0]);
+                          infowindow.setContent('<p><a href=\'individualResults.php?id='
+                          +locations[i][5]+'\'>'+locations[i][0]+'</a></p><p>'+
+                          locations[i][3]+', '+locations[i][4]+'</p>');
                           infowindow.open(map, marker);
                       }
                   })(marker, i));
@@ -137,25 +138,15 @@
               map.fitBounds(bounds);
 
               var listener = google.maps.event.addListener(map, "idle", function () {
-                  map.setZoom(11);
+                  map.setZoom(12);
                   google.maps.event.removeListener(listener);
               });
+              var markerBounds = new GLatLngBounds();
           }
-
-          function loadScript() {
-              var script = document.createElement('script');
-              script.type = 'text/javascript';
-              script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';
-              document.body.appendChild(script);
-          }
-
-          window.onload = loadScript;
           </script>
-          <script>
-          async defer
-          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';
+          <script type = 'text/javascript' sync defer
+          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';>
           </script>
-
 
           <div id="map"></div>
 

@@ -48,9 +48,8 @@
               include 'loginPage.php';
               echo "<h1>You are successfully registered</h1>";
             } else {
-              $errors['usernameMissing'] = 'Please choose a different username';
+              $errors['usernameMissing'] = 'There was a database error, please try again';
               include 'registrationPage.php';
-              echo "<h1>Please choose a different username</h1>";
             }
         }
     } else {

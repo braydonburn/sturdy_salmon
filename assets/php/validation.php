@@ -33,9 +33,9 @@ function dateValidate(&$errors, $day, $month, $year) {
   if ((!isset($day) || empty($day)) || (!isset($month) || empty($month)) ||
   (!isset($year) || empty($year))) {
     $errors['dateMissing'] = 'Please fill all date fields';
-  } elseif ((!filter_var($day, FILTER_VALIDATE_INT) && ($day>31) && ($day<1)) ||
-(!in_array($month, $monthList)) ||
-((!filter_var($year, FILTER_VALIDATE_INT) && ($year>date("Y")) && ($year<1900)))) {
+  } elseif ((!filter_var($day, FILTER_VALIDATE_INT) || ($day>31) || ($day<1)) ||
+(!in_array($month, $monthList)) || ((!filter_var($year, FILTER_VALIDATE_INT)
+|| ($year>date("Y")) || ($year<1900)))) {
     $errors['dateMissing'] = 'Please enter a valid date';
   } else {}
 }
@@ -48,11 +48,22 @@ function fullNameValidate(&$errors, $fullName) {
   } else {}
 }
 
-# This code validates the username, it just checks if the username is empty
+# This code validates the username, it first checks if the username is empty, if
+#it isn't empty, then it checks if the username already exists in the database
+#by making a query.
 function userNameValidate(&$errors, $username) {
   if (!isset($username) || empty($username)) {
     $errors['usernameMissing'] = 'Please enter your username';
-  } else {}
+  } else {
+    require 'assets/php/pdoConnection.php';
+    $usernameCheck = $pdo->prepare('SELECT username FROM `Members` WHERE
+    username = :username');
+    $usernameCheck->bindvalue(':username', $username);
+    $usernameCheck->execute();
+    if (($usernameCheck->rowCount())>0) {
+      $errors['usernameMissing'] = 'Please choose a different username';
+    }
+  }
 }
 
 # This function validates the password by checking if the forms have been filled

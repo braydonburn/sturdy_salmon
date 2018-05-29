@@ -12,7 +12,9 @@ function ready(callback) {
 
 ready(function() {
   var element = document.getElementById("overlay");
-  element.parentNode.removeChild(element);
+  if (element != null) {
+    element.parentNode.removeChild(element);
+  }
 });
 
 // Geolocation code
@@ -29,19 +31,6 @@ function getLocation() {
   function showPosition(position) {
     searchField.value = position.coords.latitude + " " + position.coords.longitude;
   }
-}
-
-// Login validation function
-// validates all relevant forms and returns true if are all correctly filled
-function validateLogin() {
-  x = true;
-  if (!(validateEmail())) {
-    x = false;
-  }
-  if (!(validateEmail())) {
-    x = false;
-  }
-  return x;
 }
 
 // Registration validation function
@@ -148,32 +137,45 @@ function validateEmpty() {
   }
 }
 
-//These statements check if text has been changed and hide the error message
+//These statements check if text has been changed to be correct, if it has then
+//the error message is changed. It only revalidates forms which have error
+//messages. To do this it first checks if the error message exists.
 function formChange() {
-  if ((document.forms["myForm"]["fullName"].value) != "") {
-    document.getElementById("nameMissing").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["month"].value) != "") {
+  if (document.getElementById("nameMissing")!==null) {
+    if ((document.forms["myForm"]["fullName"].value) != "") {
+      document.getElementById("nameMissing").style.visibility = "hidden";
+    }}
+
+  if (document.getElementById("dateMissing")!==null) {
+    if ((document.forms["myForm"]["month"].value) != "") {
     document.getElementById("dateMissing").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["password"].value) != "") {
+  }}
+
+  if (document.getElementById("passwordMissing")!==null){
+    if ((document.forms["myForm"]["password"].value) != "") {
     document.getElementById("passwordMissing").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["confirmPassword"].value) != "") {
+  }}
+
+  if (document.getElementById("confirmPass")!==null){
+    if (validatePassword()) {
     document.getElementById("confirmPass").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["day"].value) != "") {
+  }}
+
+  if (document.getElementById("dateMissing")!==null){
+    if (validateDate()) {
     document.getElementById("dateMissing").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["year"].value) != "") {
-    document.getElementById("dateMissing").style.visibility = "hidden";
-  }
-  if ((document.forms["myForm"]["username"].value) != "") {
-    document.getElementById("usernameMissing").style.visibility = "hidden";
-  }
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.forms["myForm"]["email"].value)) {
-    document.getElementById("emailMissing").style.visibility = "hidden";
-  } else {
-    document.getElementById("emailMissing").style.visibility = "visible";
+  }}
+
+  if (document.getElementById("usernameMissing")!==null){
+    if ((document.forms["myForm"]["username"].value) != "") {
+      document.getElementById("usernameMissing").style.visibility = "hidden";
+    }}
+
+  if (document.getElementById("emailMissing")!==null){
+    if (validateEmail()) {
+      document.getElementById("emailMissing").style.visibility = "hidden";
+    } else {
+      document.getElementById("emailMissing").style.visibility = "visible";
+    }
   }
 }

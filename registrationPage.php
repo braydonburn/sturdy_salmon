@@ -21,7 +21,7 @@
 
   <!-- Registration form content -->
   <div id='regoForm' class='font form registration'>
-    <form id='myForm' onchange='formChange()' onsubmit='return validateRegistration()'  method='post' action='registerConfirm.php' novalidate>
+    <form id='myForm' onchange='formChange()' onsubmit='return validateRegistration()'  method='post' action='registerConfirm.php'>
 
       <h2>User registration</h2>
       <?php

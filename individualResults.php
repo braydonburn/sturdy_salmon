@@ -1,20 +1,12 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-
-<head>
-  <title>Search</title>
+<!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  genMeta();
+  genMetaAndHeader('Search');
    ?>
-</head>
+<!-- End Header template -->
 
-<body>
-  <!-- Header template -->
   <?php
   require('assets/php/validation.php');
-  genHead();
-
   if (isset($_GET['id'])) {
       $id = $_GET['id'];
   }
@@ -41,7 +33,6 @@
       }
   }
   ?>
-  <!-- End Header template -->
 
   <script type='text/javascript'>
   // This function creates the Google map to show wifi locations
@@ -133,12 +124,10 @@
 
     </div>
   </div>
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=myMap'></script>
 
   <!-- Footer template -->
-  <footer class='footer font'>
-    <a>© 2018 Braydon Burn & Bertrand Dungan</a>
-  </footer>
+  <?php
+    genFooter();
+   ?>
   <!-- End Footer template -->
-  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=myMap'></script>
-</body>
-</html>

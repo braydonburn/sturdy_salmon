@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <title>Login</title>
+<!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  genMeta();
+  genMetaAndHeader('Login');
    ?>
-</head>
-
-<body>
-  <!-- Header template -->
-
+<!-- End Header template -->
   <?php
-  genHead();
-
   // If form submitted, insert values into the database.
   if (isset($_POST['username'])) {
       $username = ($_POST['username']);
@@ -43,18 +33,15 @@
   }
   ?>
 
-  <!-- End Header template -->
-
   <!-- Login form content -->
   <div id='login' class='font form'>
     <h2>Login to your account</h2>
-    <form id='myForm' name='login' onsubmit='return validateLogin()' method='post' action=''>
+    <form id='myForm' name='login' method='post' action=''>
       <input type='text' name='username' placeholder='username' required/>
-      <span id='emailMissing' class='error-message'>Valid email is required</span>
       <input type='password' name='password' placeholder='password' required/>
-      <span id='passwordMissing' class='error-message'>Valid password is required</span>
+      <span id='passwordMissing' class='error-message'>Username or password is incorrect</span>
       <br><br>
-      <input name='submit' type='submit' onclick='validateLogin()' value='Login' />
+      <input name='submit' type='submit' value='Login' />
     </form>
   </div>
 
@@ -63,6 +50,3 @@
   genFooter();
  ?>
   <!-- End Footer template -->
-
-</body>
-</html>

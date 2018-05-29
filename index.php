@@ -1,15 +1,10 @@
-<!DOCTYPE HTML>
-<html lang='en'>
-
-<head>
-  <title>Brisbane Connected</title>
+<!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  genMeta();
+  genMetaAndHeader('Brisbane Connected');
    ?>
-</head>
+<!-- End Header template -->
 
-<body>
 
 	<!-- Adds a spinner loading animation during page load -->
   <div id='overlay' class='onLoad'>
@@ -17,12 +12,6 @@
     <div class='spinner spinner-1'>
     </div>
   </div>
-
-  <!-- Header template -->
-  <?php
-  genHead();
-  ?>
-  <!-- End Header template -->
 
   <!-- Background Video -->
   <video autoplay muted loop id='myVideo'>
@@ -45,7 +34,3 @@
     genFooter();
    ?>
   <!-- End Footer template -->
-
-</body>
-
-</html>

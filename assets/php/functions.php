@@ -114,12 +114,19 @@ function dropdownList(){
 function genFooter() {
   echo '<footer class="footer font">
       <a>© 2018 Braydon Burn & Bertrand Dungan</a>
-    </footer>';
+    </footer>
+    </body>
+    </html>';
+
 }
 
-# This function generates the meta tags that go on every page
-function genMeta() {
-  echo "<meta charset='utf-8'>
+# This function generates the meta tags that go on every page, it also calls the
+#head function to generate the links that appear above every page.
+function genMetaAndHeader($title) {
+  echo "
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head><meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <meta name='author' content='Braydon Burn and Bertrand Dungan'>
@@ -149,5 +156,9 @@ function genMeta() {
     <meta name='twitter:title' content='Brisbane Connected'/>
     <meta name='twitter:description' content='Find free wifi in Brisbane.'/>
     <meta name='twitter:image:src' content='assets/favicon/android-chrome-192x192.png'/>
-";}
+    <!-- Title -->
+    <title>".$title."</title>
+    </head>
+    <body>";
+genHead();}
 ?>

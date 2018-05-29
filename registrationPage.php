@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <title>Register</title>
+<!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  genMeta();
+  genMetaAndHeader('Register');
    ?>
-</head>
+<!-- End Header template -->
 
 <body>
-  <!-- Header template -->
   <?php
-  genHead();
   if (empty($_POST)) {
     $errors = array();
   }
   ?>
-  <!-- End Header template -->
 
   <!-- Registration form content -->
   <div id='regoForm' class='font form registration'>
@@ -64,5 +57,3 @@
     genFooter();
    ?>
   <!-- End Footer template -->
-</body>
-</html>

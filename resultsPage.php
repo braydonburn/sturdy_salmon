@@ -1,19 +1,11 @@
-
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <title>Search</title>
+<!-- Header template -->
   <?php
   include('assets/php/functions.php');
-  genMeta();
+  genMetaAndHeader('Search');
    ?>
-</head>
+<!-- End Header template -->
 
-<body>
-  <!-- Header template -->
   <?php
-  genHead();
 
   if (isset($_GET['search_input'])) {
       $search = $_GET['search_input'];
@@ -105,7 +97,6 @@
       }
   }
   ?>
-  <!-- End Header template -->
   <!-- Map -->
   				<!-- Script to intialise map and markers -->
           <script type='text/javascript'>
@@ -177,6 +168,3 @@
     genFooter();
    ?>
   <!-- End Footer template -->
-</body>
-
-</html>

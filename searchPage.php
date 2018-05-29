@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <title>Search</title>
-  <?php
+<!-- Header template -->
+<?php
   include('assets/php/functions.php');
-  genMeta();
-   ?>
-</head>
-
-<body>
-  <!-- Header template -->
-  <?php
-  genHead();
-  ?>
-  <!-- End Header template -->
-
+  genMetaAndHeader('Search');
+?>
+<!-- End Header template -->
   <form id='content' action='resultsPage.php' method='GET' class='font form'>
 
     <h3>Text Search</h3>
@@ -73,6 +61,3 @@
     genFooter();
    ?>
   <!-- End Footer template -->
-</body>
-
-</html>

@@ -87,7 +87,8 @@
   # This code runs if there are no results
   if ($count == 0) {
       $output = 'There were no search results, sorry.';
-  # This shows the results
+  # This shows the results by adding all of the rows returned into an output in
+  #html format. It also creates the array that will be passed onto the map
   } else {
       $mapArray = [];
       foreach ($query as $row){
@@ -118,6 +119,8 @@
 
               var bounds = new google.maps.LatLngBounds();
 
+              // This creats the markers for each location returned in the
+              //results.
               for (i = 0; i < locations.length; i++) {
                   marker = new google.maps.Marker({
                       position: new google.maps.LatLng(locations[i][2], locations[i][1]),
@@ -126,6 +129,8 @@
 
                   bounds.extend(marker.position);
 
+                  // This adds the individual map markers with the appropriate
+                  //information.
                   google.maps.event.addListener(marker, 'click', (function (marker, i) {
                       return function () {
                           infowindow.setContent('<p><a href=\'individualResults.php?id='
@@ -141,16 +146,15 @@
                   map.setZoom(12);
                   google.maps.event.removeListener(listener);
               });
-              var markerBounds = new GLatLngBounds();
           }
-          </script>
-          <script type = 'text/javascript' sync defer
-          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';>
           </script>
 
           <div id="map"></div>
 
   				<!-- Google Maps API script -->
+          <script type = 'text/javascript' sync defer
+          src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC0n5agCie-72j_C-hrl8ByvMjDv5J23zk&callback=initMap';>
+          </script>
 
   <!-- Using a center-aligned table to produce the sample results page. -->
   <div class='table form font'>

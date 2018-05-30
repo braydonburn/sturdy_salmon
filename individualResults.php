@@ -66,8 +66,10 @@
         the GeoCoordinates. It also has microdata for all of these items-->
           <div class='font' itemscope itemtype='http://schema.org/Place'>
             <h2>Address</h2>
-            <span itemprop="streetAddress"><p><?php print("$address"); ?></p></span>
-            <span itemprop="addressLocality"><p><?php print("$suburb"); ?></p></span>
+            <div itemscope itemtype='http://schema.org/PostalAddress'>
+              <span itemprop="streetAddress"><p><?php print("$address"); ?></p></span>
+              <span itemprop="addressLocality"><p><?php print("$suburb"); ?></p></span>
+            </div>
             <div itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
               <p>Latitude: <?php print("$latitude"); ?></p>
               <p>Longitude: <?php print("$longitude"); ?></p>
@@ -106,9 +108,12 @@
                   $comment = sanitise($row['comment']);
                   $date = $row['date'];
                   $reviewContents .= '<div class=\'review\' itemscope
-                  itemtype=\'http://schema.org/Review\'><h3><span
+                  itemtype=\'http://schema.org/Review\'><h3><meta
+                  itemprop=\'itemReviewed\' content=\'wifi hotspot\'/><span
                   itemprop=\'author\'>'.$username.'</span>: <span
-                  itemprop=\'reviewRating\'>'.$ratingStar.'</span></h3>'.
+                  itemprop=\'reviewRating\' itemscope
+                  itemtype=\'http://schema.org/Rating\'><meta
+                  itemprop=\'ratingValue\' content='.$rating.'/>'.$ratingStar.'</span></h3>'.
                   '<p><span itemprop=\'description\'>'.$comment.'</span></p><p>
                   <span itemprop=\'datePublished\'>'.$date.'</span></p></div>';
               }

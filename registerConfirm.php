@@ -46,7 +46,6 @@
             #it to the database. If there are no errors the user will register
             if (($query->rowCount())>0) {
               include 'loginPage.php';
-              echo "<h1>You are successfully registered</h1>";
             } else {
               $errors['usernameMissing'] = 'There was a database error, please try again';
               include 'registrationPage.php';

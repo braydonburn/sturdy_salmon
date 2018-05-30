@@ -1,8 +1,4 @@
 <?php
-// This is a sanity check to start a session if it doesn't already exist
-if (!isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-  session_start();
-}
 // Checks if the user entered a username, if they did then the check will
 //happen. This is also used for if users have just registed as they will be
 //taken here to begin their session. This also provides a sanity check for if
@@ -25,11 +21,12 @@ if (isset($_POST['username'])) {
     //error is shown.
     if ($query) {
       if (password_verify($password, $passwordHash)) {
+        session_start();
         $_SESSION['username'] = $username;
         header('Location: searchPage.php');
       } else {
           $errors = 'Username or password is incorrect.';
-          require 'loginFroms.php';
+          require 'loginForms.php';
       }
     } else {
       $errors = 'There was a database error, please try again.';

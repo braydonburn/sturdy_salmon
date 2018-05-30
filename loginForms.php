@@ -1,6 +1,7 @@
 <!-- Header template -->
   <?php
-  include('assets/php/functions.php');
+  include 'assets/php/functions.php';
+  require 'assets/php/validation.php';
   genMetaAndHeader('Login');
    ?>
 <!-- End Header template -->
@@ -15,12 +16,12 @@
     <form id='myForm' name='login' method='post' action=''>
       <input type='text' name='username' placeholder='username'
       <?php if (isset($username) && !empty($username)) {
-        echo 'value='.$username;
+        echo 'value='.sanitise($username);
       } ?>
       required/>
       <input type='password' name='password' placeholder='password'
       <?php if (isset($password) && !empty($password)) {
-        echo 'value='.$password;
+        echo 'value='.sanitise($password);
       }?>
       required/>
       <span id='passwordMissing' class='error-message'>

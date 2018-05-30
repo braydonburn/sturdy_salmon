@@ -45,7 +45,7 @@
             #either because it is already in use or there was an error in adding
             #it to the database. If there are no errors the user will register
             if (($query->rowCount())>0) {
-              include 'loginPage.php';
+              include 'login.php';
             } else {
               $errors['usernameMissing'] = 'There was a database error, please try again';
               include 'registrationPage.php';

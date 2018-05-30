@@ -40,6 +40,6 @@ require('assets/php/validation.php');
         header('location: searchPage.php');
       }
     } else {
-        header('location: loginPage.php');
+        header('location: login.php');
     }
 ?>
